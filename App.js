@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 
 import Inicio from './screen/Inicio';
 import Receta from './screen/Receta';
@@ -50,5 +50,10 @@ const PerfilStack = createStackNavigator({
   }
 );
 
-const AppContainer = createAppContainer(PerfilStack);
+const TabNavigator = createBottomTabNavigator({
+  Inicio: InicioStack, 
+  Explorar: ExplorarStack,
+  Perfil: PerfilStack,
+});
 
+const AppContainer = createAppContainer(TabNavigator);
