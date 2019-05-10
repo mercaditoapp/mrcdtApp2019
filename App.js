@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 
 import Inicio from './screen/Inicio';
 import Receta from './screen/Receta';
@@ -11,6 +11,8 @@ import Perfil from './screen/Perfil';
 import MetodosPago from './screen/MetodosPago';
 import Direcciones from './screen/Direcciones';
 import DatosPersonales from './screen/DatosPersonales';
+import IniciarSesion from './screen/IniciarSesion';
+
 
 
 export default class App extends React.Component {
@@ -56,4 +58,9 @@ const TabNavigator = createBottomTabNavigator({
   Perfil: PerfilStack,
 });
 
-const AppContainer = createAppContainer(TabNavigator);
+const SwitchNavigator = createSwitchNavigator({
+  IniciarSesion: IniciarSesion,
+  TabNavigator: TabNavigator,
+})
+
+const AppContainer = createAppContainer(SwitchNavigator);
