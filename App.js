@@ -5,6 +5,9 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Inicio from './screen/Inicio';
 import Receta from './screen/Receta';
 import Pedido from './screen/Pedido';
+import Explorar from './screen/Explorar';
+import Recetas from './screen/Recetas';
+
 
 export default class App extends React.Component {
   render() {
@@ -21,4 +24,15 @@ const InicioStack = createStackNavigator({
   }
 );
 
-const AppContainer = createAppContainer(InicioStack);
+
+const ExplorarStack = createStackNavigator({
+  Explorar: { screen: Explorar },
+  Recetas: { screen: Recetas },
+  Receta: { screen: Receta },
+  Pedido: { screen: Pedido },
+}, {
+    initialRouteName: 'Explorar',
+  }
+);
+
+const AppContainer = createAppContainer(ExplorarStack);
