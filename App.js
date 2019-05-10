@@ -7,6 +7,10 @@ import Receta from './screen/Receta';
 import Pedido from './screen/Pedido';
 import Explorar from './screen/Explorar';
 import Recetas from './screen/Recetas';
+import Perfil from './screen/Perfil';
+import MetodosPago from './screen/MetodosPago';
+import Direcciones from './screen/Direcciones';
+import DatosPersonales from './screen/DatosPersonales';
 
 
 export default class App extends React.Component {
@@ -35,4 +39,16 @@ const ExplorarStack = createStackNavigator({
   }
 );
 
-const AppContainer = createAppContainer(ExplorarStack);
+const PerfilStack = createStackNavigator({
+  Perfil: { screen: Perfil },
+  MetodosPago: { screen: MetodosPago },
+  DatosPersonales: { screen: DatosPersonales },
+  Direcciones: { screen: Direcciones },
+  
+}, {
+    initialRouteName: 'Perfil',
+  }
+);
+
+const AppContainer = createAppContainer(PerfilStack);
+
