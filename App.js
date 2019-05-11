@@ -1,19 +1,16 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 
-import Inicio from './screen/Inicio';
-import Receta from './screen/Receta';
-import Pedido from './screen/Pedido';
-import Explorar from './screen/Explorar';
-import Recetas from './screen/Recetas';
-import Perfil from './screen/Perfil';
-import MetodosPago from './screen/MetodosPago';
-import Direcciones from './screen/Direcciones';
-import DatosPersonales from './screen/DatosPersonales';
-import IniciarSesion from './screen/IniciarSesion';
-
-
+import IniciarSesion from './screens/IniciarSesion';
+import Inicio from './screens/Inicio';
+import Receta from './screens/Receta';
+import Pedido from './screens/Pedido';
+import Explorar from './screens/Explorar';
+import Recetas from './screens/Recetas';
+import Perfil from './screens/Perfil';
+import MetodosPago from './screens/MetodosPago';
+import Direcciones from './screens/Direcciones';
+import DatosPersonales from './screens/DatosPersonales';
 
 export default class App extends React.Component {
   render() {
@@ -29,7 +26,6 @@ const InicioStack = createStackNavigator({
     initialRouteName: 'Inicio',
   }
 );
-
 
 const ExplorarStack = createStackNavigator({
   Explorar: { screen: Explorar },
