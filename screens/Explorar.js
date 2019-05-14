@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, Button, View,  } from 'react-native';
+import { Text, Button, View, StyleSheet, } from 'react-native';
 
+import MenuItems from '../components/MenuItems';
 
 export default class Explorar extends React.Component {
     static navigationOptions = {
@@ -15,6 +16,7 @@ export default class Explorar extends React.Component {
     };
     render() {
       return (
+        <View>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 50 }} >Explorar Screen</Text>
         <Button
@@ -22,6 +24,23 @@ export default class Explorar extends React.Component {
           onPress={() => this.props.navigation.navigate('Recetas')}
         />
         </View>
+        <View style={styles.menuContainer}>
+        <MenuItems itemImage={require('../assets/desayuno.ex.jpg')}/>
+        <MenuItems itemImage={require('../assets/ensalada.ex.jpg')}/>
+        <MenuItems itemImage={require('../assets/entrada.ex.jpg')}/>
+        <MenuItems/>
+        <MenuItems/>
+        <MenuItems/>
+        </View>
+        </View>
       );
     }
   }
+
+  const styles = StyleSheet.create({
+    menuContainer: {
+      height: '60%',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    },
+  })
