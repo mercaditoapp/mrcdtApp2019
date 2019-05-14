@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
 
 import IniciarSesion from './screens/IniciarSesion';
 import Inicio from './screens/Inicio';
@@ -52,6 +53,28 @@ const TabNavigator = createBottomTabNavigator({
   Inicio: InicioStack, 
   Explorar: ExplorarStack,
   Perfil: PerfilStack,
+},
+ {
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      if (routeName === 'Inicio') {
+        iconName = `ios-home${tintColor ? '' : '-outline'}`;
+      }
+      if (routeName === 'Explorar') {
+        iconName = `ios-compass${tintColor ? '' : '-outline'}`;
+      }
+      if (routeName === 'Perfil') {
+        iconName = `ios-contact${tintColor ? '' : '-outline'}`;
+      }
+      return <Ionicons name={iconName} size={28} color={tintColor} />;
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: '#b92147',
+    inactiveTintColor: 'gray',
+  },
 });
 
 const SwitchNavigator = createSwitchNavigator({
