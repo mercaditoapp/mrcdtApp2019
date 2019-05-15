@@ -1,93 +1,101 @@
 import React from 'react';
-import { Text, Button, StyleSheet, Image, View, ScrollView } from 'react-native';
-import { Card, CardItem, Thumbnail, Left, Body, Item, Input } from 'native-base';
+import { StyleSheet, TouchableOpacity, Text, View, ActivityIndicator, Image, ScrollView } from 'react-native';
+import { Item, Input } from 'native-base';
+import { Card  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class Inicio extends React.Component {
     static navigationOptions = {
-      title: 'Mercadito',
-      headerStyle: {
-        backgroundColor: '#b92147',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+        title: 'Mercadito',
+        headerStyle: {
+          backgroundColor: '#b92147',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
     };
-    render() {
-      return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Item rounded style={styles.buscador}>
-            <Icon name={'ios-search'} size={25}
-              style={{
-                position: 'absolute',
-                top: 10,
-                left: 10,
-              }} />
-            <Input placeholder='        Busca tu restaurante o receta favorita' />
-          </Item>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{ uri: 'https://www.juanitas.com/wp-content/uploads/2017/09/juanita-slider.png' }} />
-                <Body>
-                  <Text>Chilaquiles Doña Juanita</Text>
-                  <Button
-                    title="Se te antojaron"
-                    onPress={() => this.props.navigation.navigate('Receta')}
-                  />
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody onPress={() => this.props.navigation.navigate('Receta')} >
-              <Image
-                source={{ uri: 'https://i.pinimg.com/564x/b3/48/2f/b3482f112646f39c624c531633af7b1b.jpg' }}
-                style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{ uri: 'http://www.wellandpizza.com/wp-content/uploads/2017/11/lucianos_logo2.jpg' }} />
-                <Body>
-                  <Text>Pizza Sarten</Text>
-                  <Text note>Se te antojaron</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{ uri: 'https://food-images.files.bbci.co.uk/food/recipes/alpine_pizza_32132_16x9.jpg' }} style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0H4qF2HX5ivTJ_Dx_Ji-DPllAVLjFpEP51YEmSY3SNqpR8x1_' }} />
-                <Body>
-                  <Text>Aguachile</Text>
-                  <Text note>Se te antojaron</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{ uri: 'http://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/02/aguachilerojo.jpg' }} style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
-          </Card>
-        </ScrollView>
-      );
-    }
-  }
 
-  const styles = StyleSheet.create({
-    Container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    contentContainer: {
-      paddingTop: 3,
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            dataSource: null,
+        }
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    fetchData() {
+        return fetch('http://18.220.109.49:8080/mrcdtAPI/oauth/receta/findAll', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    isLoading: false,
+                    dataSource: responseJson
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
+    render() {
+        if (this.state.isLoading) {
+            return (
+                <View style={styles.container}>
+                    <ActivityIndicator />
+                </View>
+            )
+        } else {
+            let recetas = this.state.dataSource.map((item, key) => {
+                return <TouchableOpacity key={key} activeOpacity={.9} onPress={() => this.props.navigation.push('Receta', {
+                    otherParam: item.nombre
+                })} >
+                    <Card
+                        image={{ uri: item.imagen }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            {item.nombre}
+                        </Text>
+                        <Text>{item.descripcion}</Text>
+
+                    </Card>
+                </TouchableOpacity>
+            });
+            return (
+                <ScrollView style={styles.container}>
+                    <Item rounded style={styles.buscador}>
+                        <Input>
+                            <Icon name={'ios-search'} size={25}
+                                style={{
+                                    position: 'absolute',
+                                    top: 10,
+                                    left: 10,
+                                }} />
+                            <Text> Busca tu restaurante o receta favorita </Text>
+                        </Input>
+                    </Item>
+                    {recetas}
+                </ScrollView>
+            );
+        }
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
     },
     buscador: {
-      marginTop: 3,
-    }
-  });
+        marginTop: 3,
+      }
+});

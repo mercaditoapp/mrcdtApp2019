@@ -12,6 +12,7 @@ import Perfil from './screens/Perfil';
 import MetodosPago from './screens/MetodosPago';
 import Direcciones from './screens/Direcciones';
 import DatosPersonales from './screens/DatosPersonales';
+import SettingsScreen1 from './screens/SettingsScreen1';
 
 export default class App extends React.Component {
   render() {
