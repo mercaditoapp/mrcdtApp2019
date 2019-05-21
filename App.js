@@ -12,7 +12,7 @@ import Perfil from './screens/Perfil';
 import MetodosPago from './screens/MetodosPago';
 import Direcciones from './screens/Direcciones';
 import DatosPersonales from './screens/DatosPersonales';
-import SettingsScreen1 from './screens/SettingsScreen1';
+import Procedimiento from './components/Procedimiento';
 
 export default class App extends React.Component {
   render() {
@@ -23,6 +23,7 @@ export default class App extends React.Component {
 const InicioStack = createStackNavigator({
   Inicio: { screen: Inicio },
   Receta: { screen: Receta },
+  Procedimiento: { screen: Procedimiento},
   Pedido: { screen: Pedido },
 }, {
     initialRouteName: 'Inicio',
