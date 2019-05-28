@@ -5,8 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import IniciarSesion from './screens/IniciarSesion';
 import Inicio from './screens/Inicio';
 import Receta from './screens/Receta';
-
-
 import Pedido from './screens/Pedido';
 import Explorar from './screens/Explorar';
 import Recetas from './screens/Recetas';
@@ -25,7 +23,6 @@ export default class App extends React.Component {
 const InicioStack = createStackNavigator({
   Inicio: { screen: Inicio },
   Receta: { screen: Receta },
-
   Pedido: { screen: Pedido },
 }, {
     initialRouteName: 'Inicio',
