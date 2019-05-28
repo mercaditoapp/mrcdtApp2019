@@ -18,9 +18,9 @@ export default class Receta extends React.Component {
               <Icon name="ios-today" style={{ color: '#b92147' }} />
               <Text style={styles.text}>Descripción</Text></TabHeading>}>
             <Descripcion/>
-            <TouchableOpacity 
+            <TouchableOpacity style={styles.btnPedido}
               onPress={() => this.props.navigation.navigate('Pedido')}>
-              <Text> Pedido </Text>
+              <Text style={styles.btnText} > Pedido $300.00 </Text>
             </TouchableOpacity>
           </Tab>
           <Tab 
@@ -54,15 +54,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   btnPedido: {
-    flex: 1,
+    backgroundColor:'#5cb85c',
+    height: 40,
     borderRadius: 25,
-    backgroundColor: '#7fff00',
     justifyContent: 'center',
   },
+
   btnText: {
     color: '#ffffff',
-    fontSize: 17,
+    fontSize: 19,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
-
 });
