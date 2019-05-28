@@ -1,20 +1,16 @@
 import React from 'react';
-import { Text, Button, Icon } from 'react-native-elements';
-import { View, ScrollView, StyleSheet, Image} from 'react-native';
-import { Content, Card, CardItem, Left, Picker, ListItem, Separator } from 'native-base';
+import { Text, } from 'react-native-elements';
+import { View, ScrollView, StyleSheet, Image,  } from 'react-native';
+import { Content, Card, CardItem, Left, Picker, ListItem, Separator,  } from 'native-base';
 
 export default class Descripcion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: "key0"
+            selected: "key0",
         };
     }
-    onValueChange(value) {
-        this.setState({
-            selected: value
-        });
-    }
+   
     render() {
         return (
             <ScrollView>
@@ -22,19 +18,19 @@ export default class Descripcion extends React.Component {
                     <Card>
                         <CardItem cardBody>
                             <Image source={{ uri: 'https://food-images.files.bbci.co.uk/food/recipes/alpine_pizza_32132_16x9.jpg' }}
-                                style={{ height: 200, width: null, flex: 1 }} />
+                                style={{ height: 200, width: null, flex: 2 }} />
                         </CardItem>
                         <CardItem>
                             <Left>
-                                <Text style={{margin: 7,}} >
-                                    La mejor pizza...
+                                <Text style={{ flex: 1, margin: 7, }} >
+                                    La pizza es un pan plano horneado, habitualmente de forma redonda, elaborado con harina de trigo, sal, agua y levadura, cubierto con salsa de tomate y queso.
                                 </Text>
                             </Left>
                         </CardItem>
                     </Card>
                     <Card>
                         <CardItem>
-                            <View style={{ flex: 1,  paddingTop: 0, }}>
+                            <View style={{ flex: 1, paddingTop: 0, }}>
                                 <Text style={styles.textPicker}>
                                     Porciones:
                                 </Text>
@@ -55,23 +51,26 @@ export default class Descripcion extends React.Component {
                         </CardItem>
                     </Card>
                     <Card>
-                    <Content>
-                        <Separator bordered>
-                            <Text style={styles.textSeparador} >Ingredientes</Text>
-                        </Separator>
-                        <ListItem>
-                            <Text style={styles.textList}>Caroline Aaron</Text>
-                        </ListItem>
-                        <ListItem last>
-                            <Text>Lee Allen</Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text>Caroline Aaron</Text>
-                        </ListItem>
-                        <ListItem last>
-                            <Text>Lee Allen</Text>
-                        </ListItem>
-                    </Content>
+                        <Content>
+                            <Separator bordered style={styles.separador}>
+                                <Text style={styles.textSeparador} >Ingredientes</Text>
+                            </Separator>
+                            <ListItem>
+                                <Text style={styles.textList}>500 grs. Peperoni </Text>
+                            </ListItem>
+                            <ListItem >
+                                <Text style={styles.textList}>500 grs. Masa </Text>
+                            </ListItem>
+                            <ListItem>
+                                <Text style={styles.textList}>500 grs. Salsa de tomate</Text>
+                            </ListItem>
+                            <ListItem >
+                                <Text style={styles.textList}>500 grs. Queso Motzarella</Text>
+                            </ListItem>
+                            <ListItem >
+                                <Text style={styles.textList}>500 grs. Agua</Text>
+                            </ListItem>
+                        </Content>
                     </Card>
                 </Content>
             </ScrollView>
@@ -80,20 +79,22 @@ export default class Descripcion extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  textPicker:{
-    fontSize: 15,
-    textAlign: 'left',
-    margin: 7,
-    marginBottom: -30,
-  },
-  textList:{
-    marginLeft: 15,
-
-  },
-  textSeparador:{
-    marginLeft: 7,
-    fontSize: 15,
-    fontWeight: 'bold', 
-  },
-
+    textPicker: {
+        fontSize: 15,
+        textAlign: 'left',
+        margin: 7,
+        marginBottom: -30,
+    },
+    textList: {
+        marginLeft: 15,
+    },
+    separador: {
+        backgroundColor: '#ffffff'
+    },
+    textSeparador: {
+        marginLeft: 7,
+        fontSize: 16,
+        color: '#b92147',
+        fontWeight: 'bold',
+    },
 });

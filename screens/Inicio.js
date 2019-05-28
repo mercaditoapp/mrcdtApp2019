@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, ActivityIndicator, Image, ScrollView } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ActivityIndicator, ScrollView } from 'react-native';
 import { Item, Input } from 'native-base';
 import { Card  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'

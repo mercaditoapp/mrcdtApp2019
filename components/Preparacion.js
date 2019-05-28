@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 
 export default class Preparacion extends Component {
-
   constructor(props) {
     super(props);
     this.state = { loading: true };
   }
-
-
 
   async componentWillMount() {
     await Expo.Font.loadAsync({
@@ -19,13 +15,11 @@ export default class Preparacion extends Component {
     });
     this.setState({ loading: false });
   }
+
   render() {
     if (this.state.loading) {
-      return <Expo.AppLoading />;
+      return <Expo.AppLoading/>;
     }
-
-
-
     return (
       <Container>
         <Content>
@@ -39,7 +33,7 @@ export default class Preparacion extends Component {
                 <Text note>Lavar los incredientes . .</Text>
               </Body>
               <Right>
-                <Button transparent onPress={() => this.props.navigation.navigate('Pedido')}>
+                <Button transparent>
                   <Text>View</Text>
                 </Button>
               </Right>
