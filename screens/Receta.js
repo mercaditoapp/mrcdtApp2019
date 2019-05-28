@@ -10,7 +10,6 @@ export default class Receta extends React.Component {
   static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam })
   
   render() {
-
     return (
       <Container>
         <Tabs>
@@ -19,9 +18,9 @@ export default class Receta extends React.Component {
               <Icon name="ios-today" style={{ color: '#b92147' }} />
               <Text style={styles.text}>Descripción</Text></TabHeading>}>
             <Descripcion/>
-            <TouchableOpacity style={styles.btnLogin}
+            <TouchableOpacity 
               onPress={() => this.props.navigation.navigate('Pedido')}>
-              <Text style={styles.btnText}> Iniciar </Text>
+              <Text> Pedido </Text>
             </TouchableOpacity>
           </Tab>
           <Tab 
@@ -54,9 +53,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
+  btnPedido: {
+    flex: 1,
+    borderRadius: 25,
+    backgroundColor: '#7fff00',
+    justifyContent: 'center',
+  },
   btnText: {
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 17,
     textAlign: 'center',
   },
+
 });

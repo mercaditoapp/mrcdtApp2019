@@ -10,7 +10,11 @@ export default class Descripcion extends React.Component {
             selected: "key0",
         };
     }
-   
+    onValueChange(value) {
+        this.setState({
+            selected: value
+        });
+    }
     render() {
         return (
             <ScrollView>
