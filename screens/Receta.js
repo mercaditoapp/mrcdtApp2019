@@ -1,14 +1,11 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity } from 'react-native';
-import {Container, Tab, Tabs, TabHeading, Icon, Text} from 'native-base';
+import {Container, Tab, Tabs, TabHeading, Icon, Text,} from 'native-base';
 
 import Descripcion from '../components/Descripcion';
 import Preparacion from '../components/Preparacion';
 
-
 export default class Receta extends React.Component {
-  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam })
-  
   render() {
     return (
       <Container>
@@ -17,19 +14,19 @@ export default class Receta extends React.Component {
             heading={<TabHeading style={styles.tabs}>
               <Icon name="ios-today" style={{ color: '#b92147' }} />
               <Text style={styles.text}>Descripción</Text></TabHeading>}>
-            <Descripcion/>
+            <Descripcion />
             <TouchableOpacity style={styles.btnPedido}
               onPress={() => this.props.navigation.navigate('Pedido')}>
-              <Text style={styles.btnText} > Pedido $300.00 </Text>
+              <Text style={styles.btnText}> Pedido $300.00 </Text>
             </TouchableOpacity>
           </Tab>
-          <Tab 
-          heading={<TabHeading style={styles.tabs}>
-          <Icon name="bonfire" style={{ color: '#b92147' }} />
-          <Text style={styles.text}>Preparación</Text></TabHeading>}>
-            <Preparacion />
+          <Tab
+            heading={<TabHeading style={styles.tabs}>
+              <Icon name="bonfire" style={{ color: '#b92147' }} />
+              <Text style={styles.text}>Preparación</Text></TabHeading>}>
+            <Preparacion navigation={this.props.navigation}/>
           </Tab>
-        </Tabs>
+        </Tabs>        
       </Container>
     );
   }

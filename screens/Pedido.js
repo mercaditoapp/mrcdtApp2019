@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListView, StyleSheet, View } from 'react-native';
-import { Container, Content, Button, Icon, List, ListItem, Text, Card, CardItem, Body } from 'native-base';
+import { ListView,} from 'react-native';
+import { Container, Content, Button, Icon, List, ListItem, Text, CardItem,  } from 'native-base';
 
 const datas = [
   '500 grs. Peperoni',
@@ -51,23 +51,10 @@ export default class Pedido extends React.Component {
               <CardItem header bordered>
                 <Text>Lo que estas llevando</Text>
               </CardItem>
-              <Card style={styles.containerTitulos}>
-                <Card style={styles.cardTitulos}>
-                  <Text>Ingredientes para esta Receta</Text>
-                </Card>
-                <Card style={styles.cardTitulos}>
-                  <Text>Tu pedido</Text>
-                </Card>
-                <Card style={styles.cardTitulos}>
-                  <Text>$$</Text>
-                </Card>
-              </Card>
-
-              <Card style={styles.container}>
-                <Card style={styles.cardPedido}>
+              <Content>
                 <List
-                  leftOpenValue={50}
-                  rightOpenValue={-50}
+                  leftOpenValue={70}
+                  rightOpenValue={-70}
                   dataSource={this.ds.cloneWithRows(this.state.listViewData)}
                   renderRow={data =>
                     <ListItem>
@@ -82,53 +69,9 @@ export default class Pedido extends React.Component {
                       <Icon active name="trash" />
                     </Button>}
                 />
-                </Card>
-
-                <Card style={styles.cardPedido}>
-                <List
-                  leftOpenValue={50}
-                  rightOpenValue={-50}
-                  dataSource={this.ds.cloneWithRows(this.state.listViewData)}
-                  renderRow={minimumSale =>
-                    <ListItem>
-                      <Text> {minimumSale} </Text>
-                    </ListItem>}
-                  renderLeftHiddenRow={data =>
-                    <Button full onPress={() => alert('Este producto lo puedes borrar en caso de tenerlo en tu casa :D')}>
-                      <Icon active name="information-circle" />
-                    </Button>}
-                  renderRightHiddenRow={(data, secId, rowId, rowMap) =>
-                    <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}>
-                      <Icon active name="trash" />
-                    </Button>}
-                />
-                </Card>
-                <Card style={styles.cardPedido}>
-                  <Text>$100</Text>
-                </Card>
-              </Card>
-            </Container>
+              </Content> 
+           </Container>
           );
         }
       }
-      const styles = StyleSheet.create({
-        container: {
-          flex: 2,
-          flexDirection: 'row'
-        },
-        boxContainer: {
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center', 
-        },
-        cardPedido: {
-          flex: 3,
-        },
-        containerTitulos: {
-          flexDirection: 'row'
-        },
-        cardTitulos: {
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        },
-      })
+    

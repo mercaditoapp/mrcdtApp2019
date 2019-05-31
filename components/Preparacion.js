@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 
-export default class Preparacion extends Component {
+export default class Preparacion extends React.Component{
   constructor(props) {
     super(props);
     this.state = { loading: true };
   }
-
   async componentWillMount() {
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -30,10 +29,10 @@ export default class Preparacion extends Component {
               </Left>
               <Body>
                 <Text>Salsa</Text>
-                <Text note>Lavar los incredientes . .</Text>
+                <Text note numberOfLines={1}>Lavar los incredientes . .</Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
                   <Text>View</Text>
                 </Button>
               </Right>
@@ -44,10 +43,24 @@ export default class Preparacion extends Component {
               </Left>
               <Body>
                 <Text>Masa</Text>
-                <Text note>Prepara la masa . .</Text>
+                <Text note numberOfLines={1}>Prepara la masa . .</Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
+                  <Text>View</Text>
+                </Button>
+              </Right>
+            </ListItem>
+            <ListItem thumbnail>
+              <Left>
+                <Thumbnail square source={{ uri: 'https://i.pinimg.com/564x/ec/63/bc/ec63bcaa0122a86eb78e075d8a6681c6.jpg' }} />
+              </Left>
+              <Body>
+                <Text>Termiando</Text>
+                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+              </Body>
+              <Right>
+                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
                   <Text>View</Text>
                 </Button>
               </Right>
@@ -55,6 +68,7 @@ export default class Preparacion extends Component {
           </List>
         </Content>
       </Container>
+
     );
   }
 }
