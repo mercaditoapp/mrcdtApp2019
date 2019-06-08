@@ -1,5 +1,7 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Preparacion extends React.Component{
   constructor(props) {
@@ -23,7 +25,8 @@ export default class Preparacion extends React.Component{
       <Container>
         <Content>
           <List>
-            <ListItem thumbnail>
+
+            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
               <Left>
                 <Thumbnail square source={{ uri: 'http://hazgrandestuscomidas.com/blog/wp-content/uploads/2016/02/deliciosa-salsa-de-tomate-para-pizza-casera.jpg' }} />
               </Left>
@@ -32,12 +35,13 @@ export default class Preparacion extends React.Component{
                 <Text note numberOfLines={1}>Lavar los incredientes . .</Text>
               </Body>
               <Right>
-                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
-                  <Text>View</Text>
+                <Button transparent >
+                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
                 </Button>
               </Right>
             </ListItem>
-            <ListItem thumbnail>
+           
+            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
               <Left>
                 <Thumbnail square source={{ uri: 'https://www.recetaparapizzacasera.com/wp-content/uploads/2017/12/c%C3%B3mo-preparar-masa-para-pizza-1.jpg' }} />
               </Left>
@@ -46,12 +50,13 @@ export default class Preparacion extends React.Component{
                 <Text note numberOfLines={1}>Prepara la masa . .</Text>
               </Body>
               <Right>
-                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
-                  <Text>View</Text>
+                <Button transparent >
+                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
                 </Button>
               </Right>
             </ListItem>
-            <ListItem thumbnail>
+
+            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
               <Left>
                 <Thumbnail square source={{ uri: 'https://i.pinimg.com/564x/ec/63/bc/ec63bcaa0122a86eb78e075d8a6681c6.jpg' }} />
               </Left>
@@ -61,14 +66,13 @@ export default class Preparacion extends React.Component{
               </Body>
               <Right>
                 <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
-                  <Text>View</Text>
+                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
                 </Button>
               </Right>
             </ListItem>
           </List>
         </Content>
       </Container>
-
     );
   }
 }

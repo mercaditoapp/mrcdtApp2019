@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView,} from 'react-native';
+import { ListView, TouchableOpacity} from 'react-native';
 import { Container, Content, Button, Icon, List, ListItem, Text, CardItem,  } from 'native-base';
 
 const datas = [
@@ -18,6 +18,9 @@ const minimumSale =[
 ];
 
 export default class Pedido extends React.Component {
+  onePressed(){
+    alert('Tu pedido esta listo');
+  };
   static navigationOptions = {
     title: 'Pedido',
     headerStyle: {
@@ -70,6 +73,11 @@ export default class Pedido extends React.Component {
                     </Button>}
                 />
               </Content> 
+              <Content>
+                <TouchableOpacity onPress={() => this.onePressed() } >
+                  <Text>Listo Termina tu pedido</Text>
+                </TouchableOpacity>
+              </Content>
            </Container>
           );
         }
