@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView, TouchableOpacity} from 'react-native';
+import { ListView, TouchableOpacity, StyleSheet} from 'react-native';
 import { Container, Content, Button, Icon, List, ListItem, Text, CardItem,  } from 'native-base';
 
 const datas = [
@@ -19,7 +19,7 @@ const minimumSale =[
 
 export default class Pedido extends React.Component {
   onePressed(){
-    alert('Tu pedido esta listo');
+    alert('Tu pedido esta listo :D');
   };
   static navigationOptions = {
     title: 'Pedido',
@@ -74,12 +74,28 @@ export default class Pedido extends React.Component {
                 />
               </Content> 
               <Content>
-                <TouchableOpacity onPress={() => this.onePressed() } >
-                  <Text>Listo Termina tu pedido</Text>
+                <TouchableOpacity onPress={() => this.onePressed()} style={styles.btnFinPedido}  >
+                  <Text style={styles.text}>Listo Finaliza tu pedido</Text>
                 </TouchableOpacity>
               </Content>
            </Container>
           );
         }
       }
-    
+      
+const styles = StyleSheet.create({
+      btnFinPedido: {
+        flex: 1,
+        height: 45,
+        borderRadius: 25,
+        backgroundColor: '#5cb85c',
+        justifyContent: 'center',
+        marginTop: 20,
+      },
+      text: {
+        color: '#ffffff',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: 'bold',
+      },
+    })
