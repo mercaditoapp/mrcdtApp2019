@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, ScrollView, } from 'react-native';
 import { Avatar, } from 'react-native-elements';
-import { Content, ListItem, Icon, Left, Body, Right, Switch, Button } from 'native-base';
+import { Content, ListItem, Icon, Left, Body, Right, Button } from 'native-base';
 export default class Perfil extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
@@ -20,7 +20,7 @@ export default class Perfil extends React.Component {
           <Avatar
             rounded
             size="large"
-            source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
+            source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
             onPress={() => console.log("Works!")}
             containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
             showEditButton
@@ -28,66 +28,62 @@ export default class Perfil extends React.Component {
           <Text style={styles.textAvatar}>Carlos Romero</Text>
           <Text style={styles.textCorreo}>carlosromero@gmail.com</Text>
         </Content>
-
-       
-
         <Content style={styles.contenLisItem}>
           <ListItem icon onPress={() => this.props.navigation.navigate('MetodosPago')}>
             <Left>
               <Button onPress={() => this.props.navigation.navigate('MetodosPago')}
-                style={{ backgroundColor: "#FF9501", fontSize: 50 }}>
+                style={{ backgroundColor: "#00ffff", fontSize: 50 }}>
                 <Icon active name="card" />
               </Button>
             </Left>
             <Body>
-              <Text>Metodos de Pago</Text>
+              <Text style={styles.textBody}>Metodos de Pago</Text>
             </Body>
           </ListItem>
-
-          <ListItem icon onPress={() => this.props.navigation.navigate('Direcciones')}>
+          <ListItem icon onPress={() => this.props.navigation.navigate('Direcciones')}
+          style={{ marginTop: 2}}>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF", fontSize: 50 }}>
+              <Button style={{ backgroundColor: "#ffb6c1", fontSize: 50 }}>
                 <Icon active name="locate" />
               </Button>
             </Left>
             <Body>
-              <Text>Mis Direcciones</Text>
+              <Text style={styles.textBody}>Mis Direcciones</Text>
             </Body>
             <Right>
               <Text>Agregalas</Text>
               <Icon active name="arrow-forward" />
             </Right>
           </ListItem>
-
-          <ListItem icon onPress={() => this.props.navigation.navigate('DatosPersonales')}>
+          <ListItem icon onPress={() => this.props.navigation.navigate('DatosPersonales')}
+          style={{ marginTop: 2}}>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF", fontSize: 50 }}>
+              <Button style={{ backgroundColor: "#dda0dd", fontSize: 50 }}>
                 <Icon active name="paper" />
               </Button>
             </Left>
             <Body>
-              <Text>Datos Personales</Text>
+              <Text style={styles.textBody}>Datos Personales</Text>
             </Body>
             <Right>
               <Text>Modificalos</Text>
               <Icon active name="arrow-forward" />
             </Right>
           </ListItem>
-
-          <ListItem icon onPress={() => this.props.navigation.navigate('IniciarSesion')}>
+          <ListItem icon onPress={() => this.props.navigation.navigate('IniciarSesion')}
+          style={{ marginTop: 2}}>
             <Left>
               <Button onPress={() => this.props.navigation.navigate('MetodosPago')}
-                style={{ backgroundColor: "#FF9501", fontSize: 50 }}>
+                style={{ backgroundColor: "#ffa07a", fontSize: 50 }}>
                 <Icon active name="redo" />
               </Button>
             </Left>
             <Body>
-              <Text>Cerrar Sesión</Text>
+              <Text style={styles.textBody}>Cerrar Sesión</Text>
             </Body>
           </ListItem>
         </Content>
       </ScrollView>
-
     );
   }
 }
@@ -109,6 +105,9 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     marginRight: 50,
     marginTop: 1
+  },
+  textBody:{
+    fontSize: 16,
   },
 
 });
