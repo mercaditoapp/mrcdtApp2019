@@ -21,7 +21,7 @@ export default class Perfil extends React.Component {
             rounded
             size="large"
             source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
-            onPress={() => console.log("Works!")}
+            onPress={() => console.log("Nueva imagen de perfil")}
             containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
             showEditButton
           />
@@ -41,7 +41,7 @@ export default class Perfil extends React.Component {
             </Body>
           </ListItem>
           <ListItem icon onPress={() => this.props.navigation.navigate('Direcciones')}
-          style={{ marginTop: 2}}>
+          style={styles.espaciosItem}>
             <Left>
               <Button style={{ backgroundColor: "#ffb6c1", fontSize: 50 }}>
                 <Icon active name="locate" />
@@ -56,7 +56,7 @@ export default class Perfil extends React.Component {
             </Right>
           </ListItem>
           <ListItem icon onPress={() => this.props.navigation.navigate('DatosPersonales')}
-          style={{ marginTop: 2}}>
+          style={styles.espaciosItem}>
             <Left>
               <Button style={{ backgroundColor: "#dda0dd", fontSize: 50 }}>
                 <Icon active name="paper" />
@@ -71,7 +71,7 @@ export default class Perfil extends React.Component {
             </Right>
           </ListItem>
           <ListItem icon onPress={() => this.props.navigation.navigate('IniciarSesion')}
-          style={{ marginTop: 2}}>
+          style={styles.espaciosItem}>
             <Left>
               <Button onPress={() => this.props.navigation.navigate('MetodosPago')}
                 style={{ backgroundColor: "#ffa07a", fontSize: 50 }}>
@@ -109,5 +109,7 @@ const styles = StyleSheet.create({
   textBody:{
     fontSize: 16,
   },
-
+  espaciosItem:{
+    marginTop: 2
+  },
 });
