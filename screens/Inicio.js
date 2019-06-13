@@ -8,9 +8,9 @@ export default class Inicio extends React.Component {
     static navigationOptions = {
         title: 'Mercadito',
         headerStyle: {
-          backgroundColor: '#b92147',
+          backgroundColor: '#fff',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#b92147',
         headerTitleStyle: {
           fontWeight: 'bold',
         },

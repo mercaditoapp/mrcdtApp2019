@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, View, StyleSheet, } from 'react-native';
+import { Text, Button, View, StyleSheet,} from 'react-native';
 
 import MenuItems from '../components/MenuItems';
 
@@ -7,9 +7,9 @@ export default class Explorar extends React.Component {
     static navigationOptions = {
       title: 'Explorar',
       headerStyle: {
-        backgroundColor: '#b92147',
+        backgroundColor: '#fff',
       },
-      headerTintColor: '#fff',
+      headerTintColor: '#b92147',
       headerTitleStyle: {
         fontWeight: 'bold',
       },

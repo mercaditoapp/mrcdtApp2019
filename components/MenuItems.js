@@ -15,7 +15,7 @@ export default class MenuItem extends React.Component {
 
 const styles = StyleSheet.create({
     menuItem: {
-        width: '33.333333%',
+        width: '50%',
         height: '100%',
         padding: 1, 
         backgroundColor: '#ccc',

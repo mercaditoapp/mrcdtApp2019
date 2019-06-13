@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Content, } from 'native-base';
 import CheckboxGroup from 'react-native-checkbox-group';
 export default class Procedimiento extends React.Component{
-  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam }) 
           state={
             one:false,
             two:false ,
