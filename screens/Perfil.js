@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, Button, StyleSheet, ScrollView } from 'react-native';
-import { Avatar, ListItem} from 'react-native-elements';
-import { Content } from 'native-base';
+import { Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Avatar, } from 'react-native-elements';
+import { Content, ListItem, Icon, Left, Body, Right, Switch, Button } from 'native-base';
 export default class Perfil extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
@@ -13,72 +13,102 @@ export default class Perfil extends React.Component {
       fontWeight: 'bold',
     },
   };
-    render() {
-      return (
-        <ScrollView>
+  render() {
+    return (
+      <ScrollView>
         <Content>
-            <Avatar 
-             rounded
-              size="large"
-              source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
-              onPress={() => console.log("Works!")}
-              containerStyle={{flex: 1, marginLeft: 15, marginTop: 15}}
-              showEditButton
-            />
+          <Avatar
+            rounded
+            size="large"
+            source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
+            onPress={() => console.log("Works!")}
+            containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
+            showEditButton
+          />
+          <Text style={styles.textAvatar}>Carlos Romero</Text>
+          <Text style={styles.textCorreo}>carlosromero@gmail.com</Text>
         </Content>
+
        
-        <Content style={{marginTop: 10}}>
-        <Button
-          title="Go to Metodos de Pago"
-          onPress={() => this.props.navigation.navigate('MetodosPago')}
-        />
-        
-        <Button
-          title="Go to Direcciones"
-          onPress={() => this.props.navigation.navigate('Direcciones')}
-        />
-       
-        <Button
-          title="Go to Datos Personales"
-          onPress={() => this.props.navigation.navigate('DatosPersonales')}
-        />
-        
-        <Button
-          title="Cerrar Sesión"
-          onPress={() => this.props.navigation.navigate('IniciarSesion')}
-        />
+
+        <Content style={styles.contenLisItem}>
+          <ListItem icon onPress={() => this.props.navigation.navigate('MetodosPago')}>
+            <Left>
+              <Button onPress={() => this.props.navigation.navigate('MetodosPago')}
+                style={{ backgroundColor: "#FF9501", fontSize: 50 }}>
+                <Icon active name="card" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Metodos de Pago</Text>
+            </Body>
+          </ListItem>
+
+          <ListItem icon onPress={() => this.props.navigation.navigate('Direcciones')}>
+            <Left>
+              <Button style={{ backgroundColor: "#007AFF", fontSize: 50 }}>
+                <Icon active name="locate" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Mis Direcciones</Text>
+            </Body>
+            <Right>
+              <Text>Agregalas</Text>
+              <Icon active name="arrow-forward" />
+            </Right>
+          </ListItem>
+
+          <ListItem icon onPress={() => this.props.navigation.navigate('DatosPersonales')}>
+            <Left>
+              <Button style={{ backgroundColor: "#007AFF", fontSize: 50 }}>
+                <Icon active name="paper" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Datos Personales</Text>
+            </Body>
+            <Right>
+              <Text>Modificalos</Text>
+              <Icon active name="arrow-forward" />
+            </Right>
+          </ListItem>
+
+          <ListItem icon onPress={() => this.props.navigation.navigate('IniciarSesion')}>
+            <Left>
+              <Button onPress={() => this.props.navigation.navigate('MetodosPago')}
+                style={{ backgroundColor: "#FF9501", fontSize: 50 }}>
+                <Icon active name="redo" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Cerrar Sesión</Text>
+            </Body>
+          </ListItem>
         </Content>
-        
-     
-      
-        </ScrollView>
-        
-      );
-    }
+      </ScrollView>
+
+    );
   }
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-    },
-    avatar: {
-      fontSize: 20,
-    },
-    text: {
-      color: '#000000',
-      fontSize: 20,
-      textAlign: 'center',
-    },
-    btnPedido: {
-      backgroundColor:'#5cb85c',
-      height: 40,
-      borderRadius: 25,
-      justifyContent: 'center',
-    },
-    btnText: {
-      color: '#ffffff',
-      fontSize: 19,
-      textAlign: 'center',
-      fontWeight: 'bold',
-    },
-  });
+}
+const styles = StyleSheet.create({
+  contenLisItem: {
+    flex: 1,
+    marginTop: 10
+  },
+  textAvatar: {
+    color: '#000000',
+    fontSize: 20,
+    textAlign: 'right',
+    marginRight: 135,
+    marginTop: -43
+  },
+  textCorreo: {
+    color: '#000000',
+    fontSize: 20,
+    textAlign: 'right',
+    marginRight: 50,
+    marginTop: 1
+  },
+
+});
