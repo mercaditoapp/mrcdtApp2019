@@ -23,10 +23,10 @@ export default class Pedido extends React.Component {
   };
   static navigationOptions = {
     title: 'Pedido',
-    headerStyle: {
-      backgroundColor: '#b92147',
+     headerStyle: {
+      backgroundColor: '#fff',
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#b92147',
     headerTitleStyle: {
       fontWeight: 'bold',
     },

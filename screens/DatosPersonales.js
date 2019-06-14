@@ -16,7 +16,6 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
-      
         <Content>
           <Content>
             <Avatar
@@ -62,7 +61,6 @@ export default class App extends React.Component {
             <View style={{ flex: 1, alignItems: 'center', }}>
               <Text style={styles.textTitulo}>Fecha de nacimiento:</Text>
             </View>
-
             <ListItem icon >
               <Left>
                 <Button

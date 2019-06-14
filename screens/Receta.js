@@ -6,7 +6,7 @@ import Descripcion from '../components/Descripcion';
 import Preparacion from '../components/Preparacion';
 
 export default class Receta extends React.Component {
-  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam }) 
+  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam })
   render() {
     return (
       <Container>
