@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet,} from 'react-native';
-import { Container, Header, Content, Icon,  Item, Input, DatePicker } from 'native-base';
+import { Avatar, } from 'react-native-elements';
+import { Container, Content, Icon, Input, DatePicker, Button, ListItem, Left, Body, } from 'native-base';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,76 +16,104 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
-   
+      
         <Content>
-          <View style={{ flex: 1, alignItems: 'center', }}>
-            <Text style={styles.text}>Nombre:</Text>
-          </View>
           <Content>
-            <Item style={{ flex: 1, marginLeft: 30, marginRight: 30, }}>
-              <Icon active name='ios-contact' style={styles.iconC} />
-              <Input placeholder='Lousi Cortes' style={styles.imputC} />
-            </Item>
+            <Avatar
+              rounded
+              size="large"
+              source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
+              onPress={() => console.log("Nueva imagen de perfil")}
+              containerStyle={{ flex: 1, marginLeft: '40%', marginTop: 15 }}
+              showEditButton
+            />
+          </Content>
+          <View style={{ flex: 1, alignItems: 'center', }}>
+            <Text style={styles.textTitulo}>Nombre:</Text>
+          </View>
+          <ListItem icon >
+            <Left>
+              <Button
+                style={{ backgroundColor: "#00ffff", fontSize: 50, marginLeft: 15, }}>
+                <Icon active name="ios-contact" />
+              </Button>
+            </Left>
+            <Body style={{ flex: 1, marginRight: 30,}}>
+               <Input placeholder='Lousi Cortes' style={styles.imputText} />
+            </Body>
+          </ListItem>
+          <Content>
+            <View style={{ flex: 1, alignItems: 'center', }}>
+              <Text style={styles.textTitulo}>E-mail:</Text>
+            </View>
+            <ListItem icon >
+            <Left>
+              <Button
+                style={{ backgroundColor: "#ffb6c1", fontSize: 50, marginLeft: 15, }}>
+                <Icon active name="mail" />
+              </Button>
+            </Left>
+            <Body style={{ flex: 1, marginRight: 30,}}>
+               <Input placeholder='asdfghjklñ@gmai.com' style={styles.imputText} />
+            </Body>
+          </ListItem>
           </Content>
           <Content>
-          <View style={{ flex: 1, alignItems: 'center', }}>
-            <Text style={styles.text}>E-mail:</Text>
-          </View>
-          <Content>
-            <Item style={{ flex: 1, marginLeft: 30, marginRight: 30, }}>
-              <Icon active name='mail' style={styles.iconC} />
-              <Input placeholder='asdfghjklñ@gmai.com' style={styles.imputC} />
-            </Item>
-          </Content>
-        </Content>
-        <Content>
-          <View style={{ flex: 1, alignItems: 'center', }}>
-            <Text style={styles.text}>Fecha de nacimiento:</Text>
-          </View>
-          <Content>
-            <Item style={{ flex: 1, marginLeft: 30, marginRight: 30, }}>
-              <Icon active name='calendar' style={styles.iconC} />
-              <DatePicker
-                defaultDate={new Date(2019, 6, 13)}
-                minimumDate={new Date(1980, 1, 1)}
-                maximumDate={new Date(2019, 6, 13)}
-                locale={"en"}
-                timeZoneOffsetInMinutes={undefined}
-                modalTransparent={false}
-                animationType={"fade"}
-                androidMode={"default"}
-                placeHolderText="Seleccione fecha"
-                textStyle={{ color: "#00ced1" }}
-                placeHolderTextStyle={{ color: "#000000" }}
-                onDateChange={this.setDate}
-                disabled={false}
-              />
-            </Item>
-          </Content>
-        </Content>
-        <Content>
-          <View style={{ flex: 1, alignItems: 'center', }}>
-            <Text style={styles.text}>Celular:</Text>
-          </View>
-          <Content>
-            <Item style={{ flex: 1, marginLeft: 30, marginRight: 30, }}>
-              <Icon active name='ios-phone-portrait' style={styles.iconC} />
-              <Input placeholder='5694-7805-420-3' style={styles.imputC} />
-            </Item>
-          </Content>
-        </Content>
-        <Content>
-          <View style={{ flex: 1, alignItems: 'center', }}>
-            <Text style={styles.text}>Genero:</Text>
-          </View>
-          <Content>
-            <Item style={{ flex: 1, marginLeft: 30, marginRight: 30, }}>
-              <Icon active name='ios-phone-portrait' style={styles.iconC} />
-              <Input placeholder='5694-7805-420-3' style={styles.imputC} />
-            </Item>
-          </Content>
-        </Content>
+            <View style={{ flex: 1, alignItems: 'center', }}>
+              <Text style={styles.textTitulo}>Fecha de nacimiento:</Text>
+            </View>
 
+            <ListItem icon >
+              <Left>
+                <Button
+                  style={{ backgroundColor: "#dda0dd", fontSize: 50, marginLeft: 15, }}>
+                  <Icon active name="calendar" />
+                </Button>
+              </Left>
+              <Body style={{ flex: 1, marginRight: 30, }}>
+                <DatePicker
+                  defaultDate={new Date(2019, 6, 13)}
+                  minimumDate={new Date(1980, 1, 1)}
+                  maximumDate={new Date(2019, 6, 13)}
+                  locale={"en"}
+                  timeZoneOffsetInMinutes={undefined}
+                  modalTransparent={false}
+                  animationType={"fade"}
+                  androidMode={"default"}
+                  placeHolderText="Seleccione fecha"
+                  textStyle={{ color: "#00ced1" }}
+                  placeHolderTextStyle={{ color: "#000000", 
+                  fontSize: 17,
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  marginTop: 18, }}
+                  onDateChange={this.setDate}
+                  disabled={false}
+                />
+              </Body>
+            </ListItem>
+          </Content>
+          <Content>
+            <View style={{ flex: 1, alignItems: 'center', }}>
+              <Text style={styles.textTitulo}>Celular:</Text>
+            </View>
+            <ListItem icon>
+            <Left>
+              <Button
+                style={{ backgroundColor: "#f0e68c", fontSize: 50, marginLeft: 15, }}>
+                <Icon active name="ios-phone-portrait" />
+              </Button>
+            </Left>
+            <Body style={{ flex: 1, marginRight: 30,}}>
+               <Input placeholder='5694-7805-420-3' style={styles.imputText} />
+            </Body>
+          </ListItem>
+          </Content>
+          <Content>
+            <View style={{ flex: 1, alignItems: 'center', }}>
+              <Text style={styles.textTitulo}>Genero:</Text>
+            </View>
+          </Content>
         </Content>
       </Container>
     );
@@ -92,17 +121,26 @@ export default class App extends React.Component {
 }
 console.log()
 const styles = StyleSheet.create({
-  text: {
+  textTitulo: {
     fontSize: 20,
     alignItems: 'center', 
     justifyContent: 'center',
     marginTop: 20,
+    fontWeight: 'bold',
   },
-  imputC:{
+  imputText:{
     flex:1,
+    fontSize: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 15,
+    marginTop: 10,
   },
-  iconC:{
+  bottonItem:{
+    backgroundColor: "#00ffff", 
+    height: 30, 
+    marginTop: 20,
+    width: 30,
     marginLeft: 10,
-    marginRight: 5,
   },
 });
