@@ -1,11 +1,10 @@
 {
   "expo": {
-    "name": "Stack",
+    "name": "Mercadito2019",
     "slug": "StackNavigator",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
-      "ios",
       "android"
     ],
     "version": "1.0.0",
@@ -22,8 +21,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "io.mercadito.customer"
     }
   }
 }
+

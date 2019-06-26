@@ -30,7 +30,7 @@ const InicioStack = createStackNavigator({
   Pedido: { screen: Pedido },
 }, {
     initialRouteName: 'Inicio',
-  }
+  },
 );
 
 const ExplorarStack = createStackNavigator({
@@ -78,7 +78,7 @@ const TabNavigator = createBottomTabNavigator({
   }),
   tabBarOptions: {
     activeTintColor: '#b92147',
-    inactiveTintColor: 'gray',
+    inactiveTintColor: '#d3d3d3',
   },
 });
 

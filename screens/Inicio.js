@@ -73,15 +73,13 @@ export default class Inicio extends React.Component {
             return (
                 <ScrollView style={styles.container}>
                     <Item rounded style={styles.buscador}>
-                        <Input>
-                            <Icon name={'ios-search'} size={25}
+                    <Icon name={'ios-search'} size={25}
                                 style={{
                                     position: 'absolute',
                                     top: 10,
                                     left: 10,
                                 }} />
-                            <Text> Busca tu restaurante o receta favorita </Text>
-                        </Input>
+                        <Input placeholder='Busca tu restaurante o receta favorita'style={styles.imputText}/>
                     </Item>
                     {recetas}
                 </ScrollView>
@@ -97,5 +95,11 @@ const styles = StyleSheet.create({
     },
     buscador: {
         marginTop: 3,
-      }
+    },
+    imputText:{
+        fontSize: 18,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 25,
+      },
 });

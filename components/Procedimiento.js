@@ -31,7 +31,7 @@ export default class Procedimiento extends React.Component{
                       checkboxes={[
                         {
                           label: "Comienze por hacer la masa de la pizza. En un recipiente hondo mezcle el agua caliente con la levadura y permita que descanse 5 minutos.", // label for checkbox item
-                          value: 1, // selected value for item, if selected, what value should be sent?
+                          value: 1,
                          
                         },
                         {
