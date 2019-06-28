@@ -1,9 +1,8 @@
 import React from 'react';
 import { Text, StyleSheet, } from 'react-native';
-import { Container, Content, Body, ListItem, Left, } from 'native-base';
-import { Checkbox } from 'react-native-paper';
-import { AirbnbRating, } from 'react-native-elements';
-
+import { Container, Content, Body, ListItem, Left, Input } from 'native-base';
+import { Checkbox, List, } from 'react-native-paper';
+import { AirbnbRating, Avatar} from 'react-native-elements';
 
 export default class SeguimientoPedido extends React.Component {
   static navigationOptions = {
@@ -86,14 +85,64 @@ export default class SeguimientoPedido extends React.Component {
             </ListItem>
           )}
           <Content>
-
-            <AirbnbRating
-              style={{ paddingVertical: 10 }}
-              reviews={["Malo", "Hmm...", "Bueno", "Muy Bueno", "Exelente",]}
-              onFinishRating={this.ratingCompleted}
-              size={20}
-              showRating
-            />
+          <List.Section title="Califica a tus IH y OH">
+              <List.Accordion
+                title="OH:"
+                left={props => <List.Icon {...props} icon="motorcycle" />}
+              >
+                <Content style={{ marginBottom: 15 }}>
+                  <Avatar
+                    rounded
+                    size="small"
+                    source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
+                    containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
+                    showEditButton
+                  />
+                  <Text style={styles.textAvatar}>Louisa Mota</Text>
+                </Content>
+                <Text style={styles.textItem}>Deseas dejarle un mensaje:</Text>
+                <Body style={{ flex: 1, margin: 10 }}>
+                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} />
+                </Body>
+                <Text style={styles.textItem}>Puedes calificar a tu OH:</Text>
+                <AirbnbRating
+                  style={{ paddingVertical: 10 }}
+                  reviews={["Malo", "Hmm...", "Bueno", "Muy Bueno", "Exelente",]}
+                  onFinishRating={this.ratingCompleted}
+                  textStyle={{ fontSize: 18 }}
+                  size={20}
+                />
+              </List.Accordion>
+              <List.Accordion
+                title="IH:"
+                left={props => <List.Icon {...props} icon="shopping-cart" />}
+                expanded={this.state.expanded}
+                onPress={this._handlePress}
+              >
+                <Content style={{ marginBottom: 15 }}>
+                  <Avatar
+                    rounded
+                    size="small"
+                    source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
+                    containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
+                    showEditButton
+                  />
+                  <Text style={styles.textAvatar}>Carlos Romero</Text>
+                </Content>
+                <Text style={styles.textItem}>Deseas dejarle un mensaje:</Text>
+                <Body style={{ flex: 1, margin: 10 }}>
+                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} />
+                </Body>
+                <Text style={styles.textItem}>Puedes calificar a tu IH:</Text>
+                <AirbnbRating
+                  style={{ paddingVertical: 10 }}
+                  reviews={["Malo", "Hmm...", "Bueno", "Muy Bueno", "Exelente",]}
+                  onFinishRating={this.ratingCompleted}
+                  textStyle={{ fontSize: 18 }}
+                  size={20}
+                />
+              </List.Accordion>
+            </List.Section>
           </Content>
         </Content>
       </Container>
@@ -119,5 +168,19 @@ const styles = StyleSheet.create({
   },
   textBody: {
     fontSize: 18,
+  },
+  imputText: {
+    fontSize: 18,
+    marginLeft: -70,
+  },
+  textItem: {
+    fontSize: 18,
+  },
+  textAvatar: {
+    color: '#000000',
+    fontSize: 18,
+    textAlign: 'right',
+    marginRight: 125,
+    marginTop: -20
   },
 });
