@@ -8,6 +8,7 @@ import Receta from './screens/Receta';
 import Preparacion from './components/Preparacion';
 import Procedimiento from './components/Procedimiento';
 import Pedido from './screens/Pedido';
+import SeguimientoPedido from './screens/SeguimientoPedido';
 import Explorar from './screens/Explorar';
 import Recetas from './screens/Recetas';
 import Perfil from './screens/Perfil';
@@ -28,6 +29,7 @@ const InicioStack = createStackNavigator({
   Preparacion: {screen: Preparacion},
   Procedimiento: {screen: Procedimiento},
   Pedido: { screen: Pedido },
+  SeguimientoPedido:{screen: SeguimientoPedido },
 }, {
     initialRouteName: 'Inicio',
   },

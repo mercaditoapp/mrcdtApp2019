@@ -18,9 +18,6 @@ const minimumSale =[
 ];
 
 export default class Pedido extends React.Component {
-  onePressed(){
-    alert('Tu pedido esta listo :D');
-  };
   static navigationOptions = {
     title: 'Pedido',
      headerStyle: {
@@ -46,6 +43,9 @@ export default class Pedido extends React.Component {
     newData.splice(rowId, 1);
     this.setState({ listViewData: newData });
   }
+  onePressed(){
+    alert('Tu pedido esta listo :D');
+  };
 
         render() {
           const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -74,7 +74,8 @@ export default class Pedido extends React.Component {
                 />
               </Content> 
               <Content>
-                <TouchableOpacity onPress={() => this.onePressed()} style={styles.btnFinPedido}  >
+                <TouchableOpacity  style={styles.btnFinPedido} 
+                onPress={() => this.props.navigation.navigate('SeguimientoPedido')}>
                   <Text style={styles.text}>Listo Finaliza tu pedido</Text>
                 </TouchableOpacity>
               </Content>

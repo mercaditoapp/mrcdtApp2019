@@ -1,173 +1,100 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, } from 'react-native';
-import { Container, Content, Header, Body, ListItem, Icon, Left, Right, } from 'native-base';
-import CheckboxGroup from 'react-native-checkbox-group';
-import { AirbnbRating,  } from 'react-native-elements';
+import { Text, StyleSheet, } from 'react-native';
+import { Container, Content, Body, ListItem, Left, } from 'native-base';
+import { Checkbox } from 'react-native-paper';
+import { AirbnbRating, } from 'react-native-elements';
 
-const dataPedido = [
-  {
-    label: 'Tu OH recivio tu pedido',
-    value: 'paso 1 LISTO',
-    RNchecked: true
-  },
-  {
-    label: 'Está recolectando los productos de tu Pedido',
-    value: 'paso 2 LISTO'
-  },
-  {
-    label: 'Pedido completo',
-    value: 'paso 3 LISTO'
-  },
-  {
-    label: 'EL IH recogerá tu Pedido',
-    value: 'paso 4 LISTO'
-  },
-  {
-    label: 'Tu IH llegará a tu drección',
-    value: 'paso 5 LISTO'
-  },
-  {
-    label: 'Puedes calificar a tu OH y IH',
-    value: 'paso 6 LISTO'
-  },
-];
+
 export default class SeguimientoPedido extends React.Component {
+  static navigationOptions = {
+    title: 'Chedraui - Las Americas',
+    headerStyle: {
+      backgroundColor: '#fff',
+      textAlign: 'center',
+    },
+    headerTintColor: '#b92147',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
+  state = {
+    checked: false,
+    dataPedido: [
+      {
+        idx: 1,
+        label: 'Tu OH recivio tu pedido',
+        value: 'Proceso 1 Terminado',
+        checked: true,
+      },
+      {
+        idx: 2,
+        label: 'Está recolectando los productos de tu Pedido',
+        value: 'Proceso 2 Terminado',
+        checked: false,
+      },
+      {
+        idx: 3,
+        label: 'Pedido completo',
+        value: 'Proceso 3 Terminado',
+        checked: false,
+      },
+      {
+        idx: 4,
+        label: 'EL IH recogerá tu Pedido',
+        value: 'Proceso 4 Terminado',
+        checked: false,
+      },
+      {
+        idx: 5,
+        label: 'Tu IH llegará a tu drección',
+        value: 'Proceso 5 Terminado',
+        checked: false,
+      },
+      {
+        idx: 6,
+        label: 'Puedes calificar a tu OH y IH',
+        value: 'Proceso 6 Terminado',
+        checked: false,
+      },
+    ]
+  };
+  toggleCheckbox(idx) {
+    const changedCheckbox = this.state.dataPedido.find((cb) => cb.idx === idx);
+    changedCheckbox.checked = !changedCheckbox.checked; const checkboxes = Object.assign({},
+      this.state.dataPedido, changedCheckbox);
+    this.setState({ checkboxes });
+  }
   ratingCompleted(rating) {
     console.log("La calificación es:" + rating)
   }
-  constructor() {
-    super()
-    this.state = {
-      showPass: true,
-      press: false,
-    }
-  }
-  state={
-    one:false,
-    two:false,
-  }
-  onePressed(){
-    //alert('one');
-    this.setState({one:true  , two:false})
-  };
-  twoPressed(){
-    //alert('two')
-    this.setState({one:false, two:true})
-  }
-  showPass = () => {
-    if (this.state.press == false) {
-      this.setState({ showPass: false, press: true })
-    } else {
-      this.setState({ showPass: true, press: false })
-    }
-  }
-  
-
   render() {
     return (
       <Container>
-        <Header />
         <Content style={styles.content}>
-        <Text style={styles.textContentList}> Entrega estimada: 1 hora </Text>
-        <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                style={{marginLeft:4, color:'#ffffff'}} />
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>Tu OH recivio tu pedido</Text>
-            </Body>
-          </ListItem>
-           <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                 style={{marginLeft:4, color:'#ffffff'}} />
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>Está recolectando los productos de tu Pedido</Text>
-            </Body>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                 style={{marginLeft:4, color:'#ffffff'}} />
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>Pedido completo</Text>
-            </Body>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                style={{marginLeft:4, color:'#ffffff'}} />
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>EL IH recogerá tu Pedido</Text>
-            </Body>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                 style={{marginLeft:4, color:'#ffffff'}} />
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>Tu IH llegará a tu drección</Text>
-            </Body>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <TouchableOpacity style={{ backgroundColor: "#8fbc8f", fontSize: 50 }}  onPress={this.showPass.bind(this)} >
-                <Icon active name={this.state.press == false ? 'square-outline' : 'ios-checkbox-outline'} 
-                style={{marginLeft:4, color:'#ffffff'}}/>
-              </TouchableOpacity>
-            </Left>
-            <Body style={{marginRight: 30}}>
-              <Text style={styles.textBody}>Puedes calificar a tu OH y IH</Text>
-            </Body>
-          </ListItem>
-        </Content>
-        <Content>
-        <CheckboxGroup
-                      callback={(selected) => { console.log(selected) }}
-                      rowDirection={"column"}
-                      iconColor={"#5cb85c"}
-                      iconSize={30}
-                      checkedIcon="ios-checkbox-outline"
-                      uncheckedIcon="ios-square-outline"
-                      checkboxes={dataPedido}
-                      labelStyle={{
-                        flex: 1,
-                        color: '#333',
-                        marginLeft: 10,
-                        marginRight: 10,
-                        fontSize: 18,
-                        justifyContent: 'center',
-                        textAlign: 'left'
-                        
-                      }}
-                      rowStyle={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        padding: 1
-                      }} 
-                  />
-        </Content>
-        <Content>
+          <Text style={styles.textContentList}> Entrega estimada: 1 hora </Text>
+          {this.state.dataPedido.map(pedido =>
+            <ListItem icon key={pedido.idx}>
+              <Left>
+                <Checkbox
+                  status={pedido.checked ? 'checked' : 'unchecked'}
+                  onPress={() => this.toggleCheckbox(pedido.idx)}
+                />
+              </Left>
+              <Body style={{ marginRight: 30 }}>
+                <Text style={styles.textBody}>{pedido.label}</Text>
+              </Body>
+            </ListItem>
+          )}
+          <Content>
 
-        <AirbnbRating
-         reviews={[ "Malo","Hmm...","Bueno","Muy Bueno","Exelente",]} 
-         onFinishRating={this.ratingCompleted}
-         />
+            <AirbnbRating
+              style={{ paddingVertical: 10 }}
+              reviews={["Malo", "Hmm...", "Bueno", "Muy Bueno", "Exelente",]}
+              onFinishRating={this.ratingCompleted}
+              size={20}
+              showRating
+            />
+          </Content>
         </Content>
       </Container>
     );
@@ -176,18 +103,21 @@ export default class SeguimientoPedido extends React.Component {
 
 
 const styles = StyleSheet.create({
-  content:{
-    flex: 1, 
-    marginLeft: 5, 
-    marginTop: 15 
+  content: {
+    flex: 1,
+    marginLeft: 5,
+    marginTop: 15
   },
-  textContentList:{
+  textContentList: {
     fontSize: 18,
-    justifyContent: 'center', 
+    justifyContent: 'center',
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  textBody:{
+  container: {
+    flex: 1,
+  },
+  textBody: {
     fontSize: 18,
   },
 });
