@@ -18,7 +18,7 @@ export default class Explorar extends React.Component {
     render() {
       return (
         <View style={styles.menuContainer}>
-          <MenuItems itemImage={require('../assets/desayuno.ex.jpg')}  PlaceholderContent='Desayuno' />
+          <MenuItems itemImage={require('../assets/desayuno.ex.jpg')} />
           <MenuItems itemImage={require('../assets/ensalada.ex.jpg')} />
           <MenuItems itemImage={require('../assets/entrada.ex.jpg')} />
           <MenuItems itemImage={require('../assets/pasta.ex.jpg')} />

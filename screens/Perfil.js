@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView, } from 'react-native';
-import { Avatar, } from 'react-native-elements';
+import { Text, StyleSheet, ScrollView, View, Image, } from 'react-native';
 import { Content, ListItem, Icon, Left, Body, Right, Button } from 'native-base';
+
 export default class Perfil extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
@@ -16,18 +16,16 @@ export default class Perfil extends React.Component {
   render() {
     return (
       <ScrollView>
-        <Content>
-          <Avatar
-            rounded
-            size="large"
-            source={{ uri: 'https://i.pinimg.com/564x/4b/25/ec/4b25ececb830aeb5de490f990a41aa51.jpg' }}
-            onPress={() => console.log("Nueva imagen de perfil")}
-            containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
-            showEditButton
+        <View style={styles.speakerContainer}>
+          <Image
+            style={styles.image}
+            source={{ uri: "https://i.pinimg.com/564x/ec/e9/6e/ece96eae936146b9d31bb090165934db.jpg" }}
           />
-          <Text style={styles.textAvatar}>Carlos Romero</Text>
-          <Text style={styles.textCorreo}>carlosromero@gmail.com</Text>
-        </Content>
+          <View style={styles.speakerDetailsContainer}>
+            <Text style={styles.speakerName}>Carlos Romero</Text>
+            <Text style={styles.speakerCorreo}>carlosromero@gmail.com</Text>
+          </View>
+        </View>
         <Content style={styles.contenLisItem}>
           <ListItem icon onPress={() => this.props.navigation.navigate('MetodosPago')}>
             <Left>
@@ -87,24 +85,35 @@ export default class Perfil extends React.Component {
     );
   }
 }
+const IMAGE_SIZE = 80;
+
 const styles = StyleSheet.create({
+  speakerContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    flexDirection: "row"
+  },
+  image: {
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
+    borderRadius: IMAGE_SIZE / 2,
+    backgroundColor: "grey",
+    marginRight: 5
+  },
+  speakerDetailsContainer: {
+    justifyContent: "center"
+  },
+  speakerName: {
+    color: "purple",
+    fontSize: 20,
+    fontWeight: "500"
+  },
+  speakerCorreo: {
+    fontSize: 18
+  },
   contenLisItem: {
     flex: 1,
     marginTop: 10
-  },
-  textAvatar: {
-    color: '#000000',
-    fontSize: 20,
-    textAlign: 'right',
-    marginRight: 135,
-    marginTop: -43
-  },
-  textCorreo: {
-    color: '#000000',
-    fontSize: 20,
-    textAlign: 'right',
-    marginRight: 50,
-    marginTop: 1
   },
   textBody:{
     fontSize: 16,

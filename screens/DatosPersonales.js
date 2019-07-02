@@ -11,7 +11,9 @@ export default class App extends React.Component {
   }
   setDate(newDate) {
     this.setState({ chosenDate: newDate });
+    console.log("Edad:" + newDate)
   }
+ 
 
   render() {
     return (
