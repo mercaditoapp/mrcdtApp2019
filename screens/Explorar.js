@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, Button, View, StyleSheet,} from 'react-native';
+import { Text, Button, View, StyleSheet, ScrollView, TouchacheOpacity} from 'react-native';
 
 import MenuItems from '../components/MenuItems';
+
 
 export default class Explorar extends React.Component {
     static navigationOptions = {
@@ -16,22 +17,13 @@ export default class Explorar extends React.Component {
     };
     render() {
       return (
-        <View>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 50 }} >Explorar Screen</Text>
-        <Button
-          title="Go to Recetas"
-          onPress={() => this.props.navigation.navigate('Recetas')}
-        />
-        </View>
         <View style={styles.menuContainer}>
-        <MenuItems itemImage={require('../assets/desayuno.ex.jpg')}/>
-        <MenuItems itemImage={require('../assets/ensalada.ex.jpg')}/>
-        <MenuItems itemImage={require('../assets/entrada.ex.jpg')}/>
-        <MenuItems itemImage={require('../assets/pasta.ex.jpg')}/>
-        <MenuItems itemImage={require('../assets/platoFuerte.ex.jpg')}/>
-        <MenuItems itemImage={require('../assets/postre.ex.jpg')}/>
-        </View>
+          <MenuItems itemImage={require('../assets/desayuno.ex.jpg')}  PlaceholderContent='Desayuno' />
+          <MenuItems itemImage={require('../assets/ensalada.ex.jpg')} />
+          <MenuItems itemImage={require('../assets/entrada.ex.jpg')} />
+          <MenuItems itemImage={require('../assets/pasta.ex.jpg')} />
+          <MenuItems itemImage={require('../assets/platoFuerte.ex.jpg')} />
+          <MenuItems itemImage={require('../assets/postre.ex.jpg')} />
         </View>
       );
     }
@@ -39,7 +31,7 @@ export default class Explorar extends React.Component {
 
   const styles = StyleSheet.create({
     menuContainer: {
-      height: '60%',
+      height: '35%',
       flexDirection: 'row',
       flexWrap: 'wrap',
     },

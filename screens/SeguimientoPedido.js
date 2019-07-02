@@ -17,7 +17,6 @@ export default class SeguimientoPedido extends React.Component {
     },
   };
   state = {
-    checked: false,
     dataPedido: [
       {
         idx: 1,
