@@ -2,6 +2,19 @@ import React from 'react';
 import { Text, StyleSheet, ScrollView, View, Image, } from 'react-native';
 import { Content, ListItem, Icon, Left, Body, Right, Button } from 'native-base';
 
+const usuario = {
+  nombre: 'Carlos Romero',
+  edad: '22',
+  pais: 'Mexico',
+  correo: 'carlosromero@gmail.com',
+  telefono: '05426892',
+  fechaNacimento: '22/10/1997',
+}
+const mostrarInfo = ({nombre, correo,}) => {
+  console.log(`Nombre: ${nombre}, Correo: ${correo},`);
+}
+mostrarInfo(usuario);
+
 export default class Perfil extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
@@ -14,6 +27,7 @@ export default class Perfil extends React.Component {
     },
   };
   render() {
+    const { nombre, correo, } = usuario;
     return (
       <ScrollView>
         <View style={styles.speakerContainer}>
@@ -22,8 +36,8 @@ export default class Perfil extends React.Component {
             source={{ uri: "https://i.pinimg.com/564x/ec/e9/6e/ece96eae936146b9d31bb090165934db.jpg" }}
           />
           <View style={styles.speakerDetailsContainer}>
-            <Text style={styles.speakerName}>Carlos Romero</Text>
-            <Text style={styles.speakerCorreo}>carlosromero@gmail.com</Text>
+            <Text style={styles.speakerName}>{nombre}</Text>
+            <Text style={styles.speakerCorreo}>{correo}</Text>
           </View>
         </View>
         <Content style={styles.contenLisItem}>
