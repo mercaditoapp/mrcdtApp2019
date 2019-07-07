@@ -6,7 +6,9 @@ import Descripcion from '../components/Descripcion';
 import Preparacion from '../components/Preparacion';
 
 export default class Receta extends React.Component {
-  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.otherParam })
+  
+  //static recetaParam =  ({ navigation }) => navigation.getParam('payload');
+  static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.payload.nombre });
 
   constructor(props) {
     super(props);
@@ -15,13 +17,16 @@ export default class Receta extends React.Component {
       dataSource: null,
     }
   }
-
+  
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData() {
-    return fetch('http://18.220.109.49:8080/mrcdtAPI/oauth/receta/findByNombreUrl/parfait-de-granola', {
+    const { navigation } = this.props;
+    const recetaParam = navigation.getParam('payload');
+
+    return fetch('http://18.220.109.49:8080/mrcdtAPI/oauth/receta/findByNombreUrl/' + recetaParam.nombreUrl, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

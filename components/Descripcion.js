@@ -63,7 +63,7 @@ export default class Descripcion extends React.Component {
                             {
                                 receta.ingredientesReceta.map((ingredienteReceta, index) => {
                                     return <ListItem key={index}>
-                                             <Text>{`${ingredienteReceta.producto.nombre} ( ${ingredienteReceta.cantidad} , ${ingredienteReceta.unidad.nombre} )`}</Text>
+                                             <Text>{`${ingredienteReceta.producto.nombre} ( ${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre} )`}</Text>
                                            </ListItem>
                                 })
                             }
