@@ -10,8 +10,8 @@ const usuario = {
   telefono: '05426892',
   fechaNacimento: '22/10/1997',
 }
-const mostrarInfo = ({nombre, correo,}) => {
-  console.log(`Nombre: ${nombre}, Correo: ${correo},`);
+const mostrarInfo = ({nombre,}) => {
+  console.log();
 }
 mostrarInfo(usuario);
 

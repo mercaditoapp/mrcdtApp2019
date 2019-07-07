@@ -55,8 +55,8 @@ export default class Inicio extends React.Component {
                 </View>
             )
         } else {
-            let recetas = this.state.dataSource.map((item, key) => {
-                return <TouchableOpacity key={key} activeOpacity={.9} onPress={() => this.props.navigation.push('Receta', {
+            let recetas = this.state.dataSource.map((item, index) => {
+                return <TouchableOpacity key={index} activeOpacity={.9} onPress={() => this.props.navigation.push('Receta', {
                     otherParam: item.nombre
                 })} >
                     <Card

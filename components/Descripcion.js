@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, } from 'react-native-elements';
-import { View, ScrollView, StyleSheet, Image,  } from 'react-native';
-import { Content, Card, CardItem, Left, Picker, ListItem, Separator,  } from 'native-base';
+import { View, ScrollView, StyleSheet, Image, } from 'react-native';
+import { Content, Card, CardItem, Left, Picker, ListItem, Separator, } from 'native-base';
 
 export default class Descripcion extends React.Component {
     constructor(props) {
@@ -16,18 +16,19 @@ export default class Descripcion extends React.Component {
         });
     }
     render() {
+        let receta = this.props.payload;
         return (
             <ScrollView>
                 <Content>
                     <Card>
                         <CardItem cardBody>
-                            <Image source={{ uri: 'https://food-images.files.bbci.co.uk/food/recipes/alpine_pizza_32132_16x9.jpg' }}
+                            <Image source={{ uri: receta.imagen }}
                                 style={{ height: 200, width: null, flex: 2 }} />
                         </CardItem>
                         <CardItem>
                             <Left>
                                 <Text style={{ flex: 1, margin: 7, }} >
-                                    La pizza es un pan plano horneado, habitualmente de forma redonda, elaborado con harina de trigo, sal, agua y levadura, cubierto con salsa de tomate y queso.
+                                    {receta.descripcion}
                                 </Text>
                             </Left>
                         </CardItem>
@@ -57,23 +58,15 @@ export default class Descripcion extends React.Component {
                     <Card>
                         <Content>
                             <Separator bordered style={styles.separador}>
-                                <Text style={styles.textSeparador} >Ingredientes</Text>
+                                <Text style={styles.textSeparador}>Ingredientes</Text>
                             </Separator>
-                            <ListItem>
-                                <Text style={styles.textList}>500 grs. Peperoni </Text>
-                            </ListItem>
-                            <ListItem >
-                                <Text style={styles.textList}>500 grs. Masa </Text>
-                            </ListItem>
-                            <ListItem>
-                                <Text style={styles.textList}>500 grs. Salsa de tomate</Text>
-                            </ListItem>
-                            <ListItem >
-                                <Text style={styles.textList}>500 grs. Queso Motzarella</Text>
-                            </ListItem>
-                            <ListItem >
-                                <Text style={styles.textList}>500 grs. Agua</Text>
-                            </ListItem>
+                            {
+                                receta.ingredientesReceta.map((ingredienteReceta, index) => {
+                                    return <ListItem key={index}>
+                                             <Text>{`${ingredienteReceta.producto.nombre} ( ${ingredienteReceta.cantidad} , ${ingredienteReceta.unidad.nombre} )`}</Text>
+                                           </ListItem>
+                                })
+                            }
                         </Content>
                     </Card>
                 </Content>

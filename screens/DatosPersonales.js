@@ -14,7 +14,6 @@ export default class App extends React.Component {
     console.log("Edad:" + newDate)
   }
  
-
   render() {
     return (
       <Container>
