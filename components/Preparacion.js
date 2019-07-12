@@ -1,78 +1,45 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, ScrollView, View, ActivityIndicator, StyleSheet } from 'react-native';
 import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default class Preparacion extends React.Component{
+export default class Preparacion extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
   }
-  async componentWillMount() {
-    await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    });
-    this.setState({ loading: false });
-  }
-
   render() {
-    if (this.state.loading) {
-      return <Expo.AppLoading/>;
-    }
+    let receta = this.props.payload;
     return (
-      <Container>
-        <Content>
-          <List>
+      <ScrollView>
+        <Container>
+          {receta.procedimientos.map((procedimiento, index) => {
+            return <ListItem thumbnail key={index} onPress={() => this.props.navigation.push('Procedimiento')}>
+              <Left>
+                <Thumbnail square source={{ uri: 'https://i.pinimg.com/564x/ea/ce/a0/eacea05f533766cf0919c429fe65325f.jpg' }} />
+              </Left>
+              <Body>
+                <Text>{procedimiento.nombre}</Text>
+              </Body>
+              <Right>
+                <Button transparent>
+                  <Icon name={'ios-arrow-round-forward'} size={27} color={'#5cb85c'} />
+                </Button>
+              </Right>
+            </ListItem>
+          })
+          }
+        </Container>
+      </ScrollView>
 
-            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
-              <Left>
-                <Thumbnail square source={{ uri: 'http://hazgrandestuscomidas.com/blog/wp-content/uploads/2016/02/deliciosa-salsa-de-tomate-para-pizza-casera.jpg' }} />
-              </Left>
-              <Body>
-                <Text>Salsa</Text>
-                <Text note numberOfLines={1}>Lavar los incredientes . .</Text>
-              </Body>
-              <Right>
-                <Button transparent >
-                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
-                </Button>
-              </Right>
-            </ListItem>
-           
-            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
-              <Left>
-                <Thumbnail square source={{ uri: 'https://www.recetaparapizzacasera.com/wp-content/uploads/2017/12/c%C3%B3mo-preparar-masa-para-pizza-1.jpg' }} />
-              </Left>
-              <Body>
-                <Text>Masa</Text>
-                <Text note numberOfLines={1}>Prepara la masa . .</Text>
-              </Body>
-              <Right>
-                <Button transparent >
-                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
-                </Button>
-              </Right>
-            </ListItem>
-
-            <ListItem thumbnail onPress={() => this.props.navigation.push('Procedimiento')}>
-              <Left>
-                <Thumbnail square source={{ uri: 'https://i.pinimg.com/564x/ec/63/bc/ec63bcaa0122a86eb78e075d8a6681c6.jpg' }} />
-              </Left>
-              <Body>
-                <Text>Termiando</Text>
-                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
-              </Body>
-              <Right>
-                <Button transparent onPress={() => this.props.navigation.push('Procedimiento')}>
-                <Icon name={'ios-arrow-forward'} size={25} color={'#5cb85c'}/>
-                </Button>
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
-      </Container>
-    );
+    )
   }
 }
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+})

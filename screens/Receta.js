@@ -71,7 +71,7 @@ export default class Receta extends React.Component {
               heading={<TabHeading style={styles.tabs}>
                 <Icon name="bonfire" style={{ color: '#b92147' }} />
                 <Text style={styles.text}>Preparación</Text></TabHeading>}>
-              <Preparacion navigation={this.props.navigation} />
+              <Preparacion navigation={this.props.navigation} payload={receta} />
             </Tab>
           </Tabs>
         </Container>

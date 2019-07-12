@@ -30,16 +30,16 @@ export default class Procedimiento extends React.Component{
                     
                       checkboxes={[
                         {
-                          label: "Comienze por hacer la masa de la pizza. En un recipiente hondo mezcle el agua caliente con la levadura y permita que descanse 5 minutos.", // label for checkbox item
+                          label: "", // label for checkbox item
                           value: 1,
                          
                         },
                         {
-                          label: "En un procesador de comida mezcla la harina, el azúcar y la sal. Agrega la levadura y el aceite de oliva y mezclar hasta que obtenga una masa pegajosa.",
+                          label: "",
                           value: 2
                         },
                         {
-                          label: "Espolvoree una superficie limpia con harina y amase la masa hasta que esta ya no se pegue.",
+                          label: "",
                           value: 3
                         },
                       ]}
