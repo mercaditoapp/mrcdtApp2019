@@ -65,10 +65,8 @@ export default class Pedido extends React.Component {
             </Tabs>
           </Content>
         </CardItem>
-
-
         <ScrollView>
-          <Content>
+          <Content style={{flex: 2,}}>
             {
               receta.ingredientesReceta.map((ingredienteReceta, index) => {
                 return <ListItem thumbnail key={index}>
@@ -77,7 +75,7 @@ export default class Pedido extends React.Component {
                   </Left>
                   <Body style={{ flex: 1, marginRight: 5, }}>
                     <Text>{`${ingredienteReceta.producto.nombre}`}</Text>
-                    <Text>{`${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre}       1 Bote           $15.00`} </Text>
+                    <Text>{`${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre}   1 Bote     $15.00`} </Text>
                   </Body>
                 </ListItem>
               })
@@ -90,7 +88,6 @@ export default class Pedido extends React.Component {
             </Content>
           </Content>
         </ScrollView>
-
       </Container>
     );
   }
