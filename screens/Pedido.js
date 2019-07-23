@@ -1,26 +1,12 @@
 import React from 'react';
-import { ListView, TouchableOpacity, StyleSheet} from 'react-native';
-import { Container, Content, Button, Icon, List, ListItem, Text, CardItem,  } from 'native-base';
+import { ListView, TouchableOpacity, StyleSheet, View, ScrollView } from 'react-native';
+import { Container, Content, Picker, ListItem, Text, CardItem, Thumbnail, Left, Body, Tab, Tabs, TabHeading, } from 'native-base';
 
-const datas = [
-  '500 grs. Peperoni',
-  '500 grs. Masa',
-  '500 grs. Salsa de tomate',
-  '500 grs. Queso Motzarella',
-  '500 grs. Agua',
-];
-const minimumSale =[
-  '1 pz. Peperoni',
-  '500 grs. Masa',
-  '1 bote Salsa de tomate',
-  '1 bolsa Queso Motzarella',
-  '',
-];
 
 export default class Pedido extends React.Component {
   static navigationOptions = {
     title: 'Pedido',
-     headerStyle: {
+    headerStyle: {
       backgroundColor: '#fff',
     },
     headerTintColor: '#b92147',
@@ -31,72 +17,126 @@ export default class Pedido extends React.Component {
 
   constructor(props) {
     super(props);
-    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      basic: true,
-      listViewData: datas,  minimumSale
+      selected: "key0",
     };
   }
-  deleteRow(secId, rowId, rowMap) {
-    rowMap[`${secId}${rowId}`].props.closeRow();
-    const newData = [...this.state.listViewData];
-    newData.splice(rowId, 1);
-    this.setState({ listViewData: newData });
+  onValueChange(value) {
+    this.setState({
+      selected: value
+    });
   }
-  onePressed(){
-    alert('Tu pedido esta listo :D');
-  };
+  render() {
+    const { navigation } = this.props;
+    const receta = navigation.getParam('payload');
+    return (
+      <Container>
+        <View>
+          <Text style={styles.textTitulo}> Lo que estas llevando</Text>
+        </View>
+        <CardItem style={{ padding: 0, }}>
+          <View style={{ flex: 1, paddingTop: 0, }}>
+            <Text style={styles.textPicker}>Porciones:</Text>
+            <Picker
+              note
+              mode="dropdown"
+              style={{ width: 90, height: 40, marginLeft: 160, }}
+              selectedValue={this.state.selected}
+              onValueChange={this.onValueChange.bind(this)}
+            >
+              <Picker.Item label="2 " value="key0" />
+              <Picker.Item label="3 " value="key1" />
+              <Picker.Item label="4 " value="key2" />
+              <Picker.Item label="5 " value="key3" />
+              <Picker.Item label="10 " value="key4" />
+            </Picker>
+          </View>
+        </CardItem>
+        <Body />
+        <CardItem>
+          <Content>
+            <Tabs>
+              <Tab heading={<TabHeading style={styles.colorTaps}><Text style={styles.textTap}>Receta</Text></TabHeading>}>
+              </Tab>
+              <Tab heading={<TabHeading style={styles.colorTaps}><Text style={styles.textTap}> M.V. </Text></TabHeading>}>
+              </Tab>
+              <Tab heading={<TabHeading style={styles.colorTaps}><Text style={styles.textTap}> Precio </Text></TabHeading>}>
+              </Tab>
+            </Tabs>
+          </Content>
+        </CardItem>
 
-        render() {
-          const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-          return (
-            <Container>
-              <CardItem header bordered>
-                <Text>Lo que estas llevando</Text>
-              </CardItem>
-              <Content>
-                <List
-                  leftOpenValue={70}
-                  rightOpenValue={-70}
-                  dataSource={this.ds.cloneWithRows(this.state.listViewData)}
-                  renderRow={data =>
-                    <ListItem>
-                      <Text> {data} </Text>
-                    </ListItem>}
-                  renderLeftHiddenRow={data =>
-                    <Button full onPress={() => alert('Este producto lo puedes borrar en caso de tenerlo en tu casa :D')}>
-                      <Icon active name="information-circle" />
-                    </Button>}
-                  renderRightHiddenRow={(data, secId, rowId, rowMap) =>
-                    <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}>
-                      <Icon active name="trash" />
-                    </Button>}
-                />
-              </Content> 
-              <Content>
-                <TouchableOpacity  style={styles.btnFinPedido} 
+
+        <ScrollView>
+          <Content>
+            {
+              receta.ingredientesReceta.map((ingredienteReceta, index) => {
+                return <ListItem thumbnail key={index}>
+                  <Left style={styles.imagen}>
+                    <Thumbnail square source={{ uri: ingredienteReceta.producto.imagen }} />
+                  </Left>
+                  <Body style={{ flex: 1, marginRight: 5, }}>
+                    <Text>{`${ingredienteReceta.producto.nombre}`}</Text>
+                    <Text>{`${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre}       1 Bote           $15.00`} </Text>
+                  </Body>
+                </ListItem>
+              })
+            }
+            <Content>
+              <TouchableOpacity style={styles.btnFinPedido}
                 onPress={() => this.props.navigation.navigate('SeguimientoPedido')}>
-                  <Text style={styles.text}>Listo Finaliza tu pedido</Text>
-                </TouchableOpacity>
-              </Content>
-           </Container>
-          );
-        }
-      }
-      
+                <Text style={styles.textBtn}>Listo Finaliza tu pedido</Text>
+              </TouchableOpacity>
+            </Content>
+          </Content>
+        </ScrollView>
+
+      </Container>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
-      btnFinPedido: {
-        flex: 1,
-        height: 45,
-        borderRadius: 25,
-        backgroundColor: '#5cb85c',
-        justifyContent: 'center',
-        marginTop: 20,
-      },
-      text: {
-        color: '#ffffff',
-        fontSize: 16,
-        textAlign: 'center',
-        fontWeight: 'bold',
-      },
-    })
+  textTitulo: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: 5,
+    fontWeight: 'bold',
+
+  },
+  textPicker: {
+    fontSize: 16,
+    textAlign: 'left',
+    margin: 7,
+    marginBottom: -30,
+    marginLeft: 80,
+  },
+  colorTaps: {
+    backgroundColor: '#fff',
+  },
+  textTap: {
+    color: '#000000',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  imagen: {
+    marginLeft: -5,
+  },
+  btnFinPedido: {
+    height: 40,
+    width: 200,
+    borderRadius: 25,
+    backgroundColor: '#5cb85c',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginLeft: 70,
+    marginRight: 20,
+  },
+  textBtn: {
+    color: '#ffffff',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+
+})

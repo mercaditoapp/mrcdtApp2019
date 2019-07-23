@@ -61,11 +61,7 @@ export default class Receta extends React.Component {
               heading={<TabHeading style={styles.tabs}>
                 <Icon name="ios-today" style={{ color: '#b92147' }} />
                 <Text style={styles.text}>Descripción</Text></TabHeading>}>
-              <Descripcion payload={receta}/>
-              <TouchableOpacity style={styles.btnPedido}
-                onPress={() => this.props.navigation.navigate('Pedido')}>
-                <Text style={styles.btnText}> Pedido $150.00 </Text>
-              </TouchableOpacity>
+              <Descripcion navigation={this.props.navigation} payload={receta}/>           
             </Tab>
             <Tab
               heading={<TabHeading style={styles.tabs}>
@@ -76,7 +72,7 @@ export default class Receta extends React.Component {
           </Tabs>
         </Container>
       );
-    }
+    } 
   }
 }
 const styles = StyleSheet.create({
@@ -98,17 +94,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  btnPedido: {
-    backgroundColor: '#5cb85c',
-    height: 40,
-    borderRadius: 25,
-    justifyContent: 'center',
-  },
 
-  btnText: {
-    color: '#ffffff',
-    fontSize: 19,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
 });

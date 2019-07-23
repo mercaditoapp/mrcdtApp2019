@@ -1,18 +1,18 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, ActivityIndicator, ScrollView } from 'react-native';
 import { Item, Input } from 'native-base';
-import { Card  } from 'react-native-elements';
+import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class Inicio extends React.Component {
     static navigationOptions = {
         title: 'Mercadito',
         headerStyle: {
-          backgroundColor: '#fff',
+            backgroundColor: '#fff',
         },
         headerTintColor: '#b92147',
         headerTitleStyle: {
-          fontWeight: 'bold',
+            fontWeight: 'bold',
         },
     };
 
@@ -73,13 +73,13 @@ export default class Inicio extends React.Component {
             return (
                 <ScrollView style={styles.container}>
                     <Item rounded style={styles.buscador}>
-                    <Icon name={'ios-search'} size={25}
-                                style={{
-                                    position: 'absolute',
-                                    top: 10,
-                                    left: 10,
-                                }} />
-                        <Input placeholder='Busca tu restaurante o receta favorita'style={styles.imputText}/>
+                        <Icon name={'ios-search'} size={25}
+                            style={{
+                                position: 'absolute',
+                                top: 10,
+                                left: 10,
+                            }} />
+                        <Input placeholder='Busca tu restaurante o receta favorita' style={styles.imputText} />
                     </Item>
                     {recetas}
                 </ScrollView>
@@ -96,10 +96,10 @@ const styles = StyleSheet.create({
     buscador: {
         marginTop: 3,
     },
-    imputText:{
+    imputText: {
         fontSize: 18,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 25,
-      },
+    },
 });

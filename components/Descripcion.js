@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, } from 'react-native-elements';
-import { View, ScrollView, StyleSheet, Image, } from 'react-native';
+import { View, ScrollView, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { Content, Card, CardItem, Left, Picker, ListItem, Separator, } from 'native-base';
 
 export default class Descripcion extends React.Component {
@@ -70,6 +69,10 @@ export default class Descripcion extends React.Component {
                         </Content>
                     </Card>
                 </Content>
+                <TouchableOpacity style={styles.btnPedido}
+                onPress={() => this.props.navigation.push('Pedido', {payload: receta})}>
+                <Text style={styles.btnText}>{`Ver Pedido ${receta.precio}`}</Text>
+              </TouchableOpacity>
             </ScrollView>
         )
     }
@@ -94,4 +97,20 @@ const styles = StyleSheet.create({
         color: '#b92147',
         fontWeight: 'bold',
     },
+    btnPedido: {
+        backgroundColor: '#5cb85c',
+        borderRadius: 25,
+        justifyContent: 'center',
+        height: 40,
+        width: 250,
+        marginLeft: 50,
+        marginRight:  10,
+      },
+    
+      btnText: {
+        color: '#ffffff',
+        fontSize: 19,
+        textAlign: 'center',
+        fontWeight: 'bold',
+      },
 });
