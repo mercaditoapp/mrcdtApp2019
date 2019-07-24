@@ -52,8 +52,7 @@ export default class Pedido extends React.Component {
             </Picker>
           </View>
         </CardItem>
-        <Body />
-        <CardItem>
+        <CardItem style={{ paddingTop: -2 }}>
           <Content>
             <Tabs>
               <Tab heading={<TabHeading style={styles.colorTaps}><Text style={styles.textTap}>Receta</Text></TabHeading>}>
@@ -65,8 +64,10 @@ export default class Pedido extends React.Component {
             </Tabs>
           </Content>
         </CardItem>
+
         <ScrollView>
-          <Content style={{flex: 2,}}>
+          <Content style={{ flex: 3 }}>
+          
             {
               receta.ingredientesReceta.map((ingredienteReceta, index) => {
                 return <ListItem thumbnail key={index}>
@@ -75,7 +76,11 @@ export default class Pedido extends React.Component {
                   </Left>
                   <Body style={{ flex: 1, marginRight: 5, }}>
                     <Text>{`${ingredienteReceta.producto.nombre}`}</Text>
-                    <Text>{`${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre}   1 Bote     $15.00`} </Text>
+                    <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row' }}>
+                      <View style={{ flex: 1, alignSelf: 'stretch' }}><Text>{`${ingredienteReceta.cantidad} ${ingredienteReceta.unidad.nombre}`}</Text></View>
+                      <View style={{ flex: 1, alignSelf: 'stretch' }}><Text>  1 Bote</Text></View>
+                      <View style={{ flex: 1, alignSelf: 'stretch' }}><Text>    $15.00</Text></View>
+                    </View>
                   </Body>
                 </ListItem>
               })

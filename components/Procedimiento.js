@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, ScrollView, StyleSheet, View, } from 'react-native';
-import { Content, ListItem, Thumbnail, Left, Body, } from 'native-base';
+import { Content, ListItem, Thumbnail, Left, Body, Container, } from 'native-base';
 
 export default class Procedimiento extends React.Component {
   static navigationOptions = ({ navigation }) => ({ title: navigation.state.params.payload.nombre });
@@ -15,29 +15,35 @@ export default class Procedimiento extends React.Component {
     const { navigation } = this.props;
     const procedimiento = navigation.getParam('payload');
     return (
-      <ScrollView>
-        <Content>
+      <Container>
+
+        <Content style={{ flex: 1 }}>
           <Text style={styles.textTitulo}>INGREDIENTES</Text>
           {procedimiento.ingredientesProcedimiento.map((ingredienteProcedimiento, index) => {
             return <ListItem thumbnail key={index} style={styles.listItem}>
               <Left>
                 <Thumbnail square source={{ uri: ingredienteProcedimiento.producto.imagen }} />
               </Left>
-              <Body style={{ flex: 1, marginRight: 5, }}>
-                <Text>{`${ingredienteProcedimiento.producto.nombre} ( ${ingredienteProcedimiento.cantidad} ${ingredienteProcedimiento.unidad.nombre} )`}</Text>
+              <Body style={{ marginRight: 5, marginTop: 1 }}>
+                <Text style={{fontSize: 15}}>{`${ingredienteProcedimiento.producto.nombre} ( ${ingredienteProcedimiento.cantidad} ${ingredienteProcedimiento.unidad.nombre} )`}</Text>
               </Body>
             </ListItem>
           })}
         </Content>
-        <Content>
+
+        <Content style={{ flex: 3 }}>
           <Text style={styles.textTitulo}>PASOS</Text>
           {procedimiento.pasos.map((pasos, index) => {
             return <ListItem key={index}>
-              <Text>{`${pasos.indice}.-  ${pasos.descripcion}`}</Text>
+              <Text style={{fontSize: 17}}>{`${pasos.indice}.-  ${pasos.descripcion}`}</Text>
             </ListItem>
           })}
         </Content>
-      </ScrollView>
+
+
+      </Container>
+
+
     )
   }
 }
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
   listItem: {
     marginTop: 7,
   },
-  container:{ flex: 1, justifyContent: "center"},
+  container: { flex: 1, justifyContent: "center" },
   backgroundVideo: {
     position: 'absolute',
     top: 0,

@@ -30,7 +30,6 @@ export default class Preparacion extends React.Component {
           }
         </Container>
       </ScrollView>
-
     )
   }
 }
