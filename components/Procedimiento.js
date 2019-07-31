@@ -17,7 +17,7 @@ export default class Procedimiento extends React.Component {
     return (
       <Container>
 
-        <Content style={{ flex: 1 }}>
+        <Content>
           <Text style={styles.textTitulo}>INGREDIENTES</Text>
           {procedimiento.ingredientesProcedimiento.map((ingredienteProcedimiento, index) => {
             return <ListItem thumbnail key={index} style={styles.listItem}>
@@ -29,9 +29,6 @@ export default class Procedimiento extends React.Component {
               </Body>
             </ListItem>
           })}
-        </Content>
-
-        <Content style={{ flex: 3 }}>
           <Text style={styles.textTitulo}>PASOS</Text>
           {procedimiento.pasos.map((pasos, index) => {
             return <ListItem key={index}>
