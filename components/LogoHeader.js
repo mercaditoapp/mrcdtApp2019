@@ -6,7 +6,7 @@ export default class LogoHeader extends React.Component {
     return (
       <Image
         source={require('../assets/Logo_Header.png')}
-        style={{ width: 200, height: 150,  marginRight: -80, }}
+        style={{ width: 200, height: 150,  marginRight: -100, }}
       />
     );
   }

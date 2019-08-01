@@ -4,7 +4,6 @@ import { Item, Input } from 'native-base';
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LogoHeader from '../components/LogoHeader' ;
-import Logo from '../assets/Logo_Header.png';
 
 export default class Inicio extends React.Component {
     static navigationOptions = {
@@ -16,9 +15,10 @@ export default class Inicio extends React.Component {
         this.state = {
             isLoading: true,
             dataSource: null,
+            text: ''
         }
     }
-
+    
     componentDidMount() {
         this.fetchData();
     }
@@ -40,6 +40,19 @@ export default class Inicio extends React.Component {
             .catch((error) => {
                 console.log(error)
             });
+    }
+
+    filterSearch(text){
+        console.log(text);
+        const newData = data.filter(function(item){
+            itemData = item.nombre.toUpeperCase();
+            textData = text.toUpeperCase()
+            return itemData.indexOf(textData) > -1 
+        })
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(newData),
+            text: text
+        })
     }
 
     render() {
@@ -74,7 +87,9 @@ export default class Inicio extends React.Component {
                                 top: 10,
                                 left: 10,
                             }} />
-                        <Input placeholder='Busca tu restaurante o receta favorita' style={styles.imputText} />
+                        <Input placeholder='Busca tu receta favorita' style={styles.imputText} 
+                        onChangeText={(text) => this.filterSearch(text)}
+                        value={this.state.text}/>
                     </Item>
                     {recetas}
                 </ScrollView>
