@@ -2,18 +2,13 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, ActivityIndicator, ScrollView } from 'react-native';
 import { Item, Input } from 'native-base';
 import { Card } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons';
+import LogoHeader from '../components/LogoHeader' ;
+import Logo from '../assets/Logo_Header.png';
 
 export default class Inicio extends React.Component {
     static navigationOptions = {
-        title: 'Mercadito',
-        headerStyle: {
-            backgroundColor: '#fff',
-        },
-        headerTintColor: '#b92147',
-        headerTitleStyle: {
-            fontWeight: 'bold',
-        },
+        headerTitle: <LogoHeader/>,
     };
 
     constructor(props) {
@@ -94,7 +89,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     buscador: {
-        marginTop: 3,
+        marginTop: 7,
+        marginRight: 10,
+        marginLeft: 10,
     },
     imputText: {
         fontSize: 18,

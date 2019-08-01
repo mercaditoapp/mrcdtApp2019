@@ -87,7 +87,7 @@ export default class SeguimientoPedido extends React.Component {
           <List.Section title="Califica a tus IH y OH">
               <List.Accordion
                 title="OH:"
-                left={props => <List.Icon {...props} icon="motorcycle" />}
+                left={props => <List.Icon {...props} icon="motorcycle"/>}
               >
                 <Content style={{ marginBottom: 15 }}>
                   <Avatar
