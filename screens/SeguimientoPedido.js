@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, } from 'react-native';
-import { Container, Content, Body, ListItem, Left, Input } from 'native-base';
-import { Checkbox, List, } from 'react-native-paper';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Container, Content, Body, ListItem, Left, Input, Icon} from 'native-base';
+import { Checkbox, List, Button } from 'react-native-paper';
 import { AirbnbRating, Avatar} from 'react-native-elements';
 
 export default class SeguimientoPedido extends React.Component {
@@ -15,7 +15,7 @@ export default class SeguimientoPedido extends React.Component {
     headerTitleStyle: {
       fontWeight: 'bold',
     },
-  };
+  };  
   state = {
     dataPedido: [
       {
@@ -63,7 +63,22 @@ export default class SeguimientoPedido extends React.Component {
     this.setState({ checkboxes });
   }
   ratingCompleted(rating) {
-    console.log("La calificación es:" + rating)
+    console.log("Tu calificación:" + rating)
+  }
+  onePressed(){
+    alert(`
+      ¿Que es un OH? 
+  El OH se encarga de que todos los productos que contiene tu receta.
+
+      ¿Que es un IH? 
+  El IH se encarga de llevarte la receta hasta la puerta de tu casa.
+    `); 
+  }
+  comentarioOH(text){
+    console.log(`OH:${text}`);
+  }
+  comentarioIH(text){
+    console.log(`IH:${text}`);
   }
   render() {
     return (
@@ -85,11 +100,15 @@ export default class SeguimientoPedido extends React.Component {
           )}
           <Content>
           <List.Section title="Califica a tus IH y OH">
-              <List.Accordion
+              <TouchableOpacity style={styles.btnLogin}
+                onPress={() => this.onePressed()}>
+                 <Icon active name="help-circle-outline" style={{fontSize: 13}}/>
+              </TouchableOpacity>
+
+              <List.Accordion 
                 title="OH:"
-                left={props => <List.Icon {...props} icon="motorcycle"/>}
-              >
-                <Content style={{ marginBottom: 15 }}>
+                left={props => <List.Icon {...props} icon="motorcycle" color="#7fffd4"/>}>
+               <Content style={{ marginBottom: 15 }}>
                   <Avatar
                     rounded
                     size="small"
@@ -97,11 +116,12 @@ export default class SeguimientoPedido extends React.Component {
                     containerStyle={{ flex: 1, marginLeft: 15, marginTop: 15 }}
                     showEditButton
                   />
-                  <Text style={styles.textAvatar}>Louisa Mota</Text>
+                  <Text style={styles.textAvatar}>Louisa Romero</Text>
                 </Content>
                 <Text style={styles.textItem}>Deseas dejarle un mensaje:</Text>
                 <Body style={{ flex: 1, margin: 10 }}>
-                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} />
+                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} 
+                    onChangeText={(text) => this.comentarioOH(text)}/>
                 </Body>
                 <Text style={styles.textItem}>Puedes calificar a tu OH:</Text>
                 <AirbnbRating
@@ -114,10 +134,7 @@ export default class SeguimientoPedido extends React.Component {
               </List.Accordion>
               <List.Accordion
                 title="IH:"
-                left={props => <List.Icon {...props} icon="shopping-cart" />}
-                expanded={this.state.expanded}
-                onPress={this._handlePress}
-              >
+                left={props => <List.Icon {...props} icon="shopping-cart" color="#7fffd4"/>}>
                 <Content style={{ marginBottom: 15 }}>
                   <Avatar
                     rounded
@@ -130,7 +147,8 @@ export default class SeguimientoPedido extends React.Component {
                 </Content>
                 <Text style={styles.textItem}>Deseas dejarle un mensaje:</Text>
                 <Body style={{ flex: 1, margin: 10 }}>
-                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} />
+                  <Input placeholder='Escribele algo si lo deceas' style={styles.imputText} 
+                  onChangeText={(text) => this.comentarioIH(text)}/>
                 </Body>
                 <Text style={styles.textItem}>Puedes calificar a tu IH:</Text>
                 <AirbnbRating
@@ -161,6 +179,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  btnLogin: {
+    height: 40,
+    width: 50,
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    marginLeft: 140,
+    marginTop: -30
   },
   container: {
     flex: 1,
