@@ -3,7 +3,7 @@
     "name": "Mercadito2019",
     "slug": "StackNavigator",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "android"
     ],

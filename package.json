@@ -7,19 +7,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^32.0.0",
-    "native-base": "^2.12.1",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "expo": "^35.0.0",
+    "native-base": "^2.13.8",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-checkbox-group": "^1.0.3",
-    "react-native-elements": "^1.1.0",
-    "react-native-paper": "^2.1.2",
-    "react-native-video": "^4.4.3",
-    "react-navigation": "^3.9.1",
-    "sharp": "^0.23.0"
+    "react-native-elements": "^1.2.7",
+    "react-native-gesture-handler": "^1.5.0",
+    "react-native-paper": "^2.16.0",
+    "react-native-video": "^4.4.4",
+    "react-navigation": "^3.13.0",
+    "sharp": "^0.23.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.2.0"
   },
   "private": true
 }
